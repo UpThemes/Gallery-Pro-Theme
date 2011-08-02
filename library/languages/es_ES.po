@@ -1,0 +1,486 @@
+# kubrick theme pot file.
+# Copyright (C) 2007 WordPress
+# This file is distributed under the same license as the kubrick theme package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Thematic 0.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-03-11 11:30+0100\n"
+"PO-Revision-Date: 2009-03-12 17:09+0100\n"
+"Last-Translator: Chris Gossmann <chris.gossmann@googlemail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: SPAIN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ../../../gpro\n"
+
+#: ../../../gproSVN/404.php:10
+msgid "Apologies, but we were unable to find what you were looking for. Perhaps  searching will help."
+msgstr "Lo sentimos pero no hemos encontrado lo que buscas. "
+
+#: ../../../gproSVN/404.php:15
+#: ../../../gproSVN/search.php:58
+msgid "Find"
+msgstr "Encontrar"
+
+#: ../../../gproSVN/archive.php:16
+#, php-format
+msgid "Daily Archives: <span>%s</span>"
+msgstr "Archivos diarios: <span>%s</span>"
+
+#: ../../../gproSVN/archive.php:18
+#, php-format
+msgid "Monthly Archives: <span>%s</span>"
+msgstr "Archivos por mes: <span>%s</span>"
+
+#: ../../../gproSVN/archive.php:20
+#, php-format
+msgid "Yearly Archives: <span>%s</span>"
+msgstr "Archivos anuales: <span>%s</span>"
+
+#: ../../../gproSVN/archive.php:22
+msgid "Blog Archives"
+msgstr "Archivos del blog"
+
+#: ../../../gproSVN/archive.php:31
+#: ../../../gproSVN/archive.php:53
+#: ../../../gproSVN/author.php:21
+#: ../../../gproSVN/author.php:57
+#: ../../../gproSVN/category.php:20
+#: ../../../gproSVN/category.php:42
+#: ../../../gproSVN/index.php:17
+#: ../../../gproSVN/index.php:49
+#: ../../../gproSVN/search.php:21
+#: ../../../gproSVN/search.php:43
+msgid "<span class=\"meta-nav\">&laquo;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&laquo;</span> Entradas anteriores"
+
+#: ../../../gproSVN/archive.php:32
+#: ../../../gproSVN/archive.php:54
+#: ../../../gproSVN/author.php:22
+#: ../../../gproSVN/author.php:58
+#: ../../../gproSVN/category.php:21
+#: ../../../gproSVN/category.php:43
+#: ../../../gproSVN/index.php:18
+#: ../../../gproSVN/index.php:50
+#: ../../../gproSVN/search.php:22
+#: ../../../gproSVN/search.php:44
+msgid "Newer posts <span class=\"meta-nav\">&raquo;</span>"
+msgstr "Entradas  recientes <span class=\"meta-nav\">&raquo;</span>"
+
+#: ../../../gproSVN/archive.php:41
+#: ../../../gproSVN/attachment.php:20
+#: ../../../gproSVN/author.php:45
+#: ../../../gproSVN/category.php:30
+#: ../../../gproSVN/index.php:30
+#: ../../../gproSVN/search.php:31
+msgid "Read More <span class=\"meta-nav\">&raquo;</span>"
+msgstr "Leer Más  <span class=\"meta-nav\">&raquo;</span>"
+
+#: ../../../gproSVN/archives.php:20
+msgid "Archives by Category"
+msgstr "Archivos por categoría"
+
+#: ../../../gproSVN/archives.php:26
+msgid "Archives by Month"
+msgstr "Archivos por Mes"
+
+#: ../../../gproSVN/archives.php:32
+#: ../../../gproSVN/links.php:20
+#: ../../../gproSVN/page.php:16
+msgid "Edit"
+msgstr "Editar"
+
+#: ../../../gproSVN/attachment.php:22
+#: ../../../gproSVN/index.php:32
+msgid "Pages:"
+msgstr "Páginas:"
+
+#: ../../../gproSVN/author.php:15
+msgid "Author Archives: "
+msgstr "Archivos del autor: "
+
+#: ../../../gproSVN/author.php:34
+msgid "Email "
+msgstr "Email"
+
+#: ../../../gproSVN/category.php:13
+msgid "Category Archives:"
+msgstr "Archivos por categoría:"
+
+#: ../../../gproSVN/comments.php:10
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr "Esta entrada está protegida por contraseña. Incluye la contraseña para ver los comentarios."
+
+#: ../../../gproSVN/comments.php:31
+#, php-format
+msgid "<span>%d</span> Comments"
+msgstr "<span>%d</span>  Comentarios"
+
+#: ../../../gproSVN/comments.php:31
+msgid "<span>One</span> Comment"
+msgstr "<span>Un</span> Comentario"
+
+#: ../../../gproSVN/comments.php:52
+#, php-format
+msgid "<span>%d</span> Trackbacks"
+msgstr "<span>%d</span> Trackbacks"
+
+#: ../../../gproSVN/comments.php:52
+msgid "<span>One</span> Trackback"
+msgstr "<span>Un</span> Trackback"
+
+#: ../../../gproSVN/comments.php:67
+msgid "Post a Comment"
+msgstr "Publicar un comentario"
+
+#: ../../../gproSVN/comments.php:67
+#, php-format
+msgid "Post a Reply to %s"
+msgstr "Responde a %s"
+
+#: ../../../gproSVN/comments.php:72
+#, php-format
+msgid "You must be <a href=\"%s\" title=\"Log in\">logged in</a> to post a comment."
+msgstr "Debes estar <a href=\"%s\" title=\"Logueado\">logueado</a> para publicar un comentario."
+
+#: ../../../gproSVN/comments.php:83
+#, php-format
+msgid "<span class=\"loggedin\">Logged in as <a href=\"%1$s\" title=\"Logged in as %2$s\">%2$s</a>.</span> <span class=\"logout\"><a href=\"%3$s\" title=\"Log out of this account\">Log out?</a></span>"
+msgstr "Logueado como <a href=\"%1$s\">%2$s</a>.</span> <span class=\"logout\"><a href=\"%3$s\" title=\"Salir de esta cuenta\" >¿Salir?</a></span>"
+
+#: ../../../gproSVN/comments.php:90
+msgid "Your email is <em>never</em> published nor shared."
+msgstr "Tu correo <em>nunca</em> es compartido ni publicado."
+
+#: ../../../gproSVN/comments.php:90
+msgid "Required fields are marked <span class=\"required\">*</span>"
+msgstr "Los campos requeridos están marcados <span class=\"requeridos\">*</span> "
+
+#: ../../../gproSVN/comments.php:93
+msgid "Name"
+msgstr "Nombre"
+
+#: ../../../gproSVN/comments.php:93
+#: ../../../gproSVN/comments.php:98
+msgid "<span class=\"required\">*</span>"
+msgstr "<span class=\"requerido\">*</span>"
+
+#: ../../../gproSVN/comments.php:98
+msgid "Email"
+msgstr "Email"
+
+#: ../../../gproSVN/comments.php:103
+msgid "Website"
+msgstr "Website"
+
+#: ../../../gproSVN/comments.php:110
+msgid "Comment"
+msgstr "Comentar"
+
+#: ../../../gproSVN/comments.php:120
+msgid "Post Comment"
+msgstr "Publicar comentario"
+
+#: ../../../gproSVN/page.php:14
+msgid "Pages: "
+msgstr "Páginas: "
+
+#: ../../../gproSVN/search.php:15
+msgid "Search Results for:"
+msgstr "Resultados de la búsqueda:"
+
+#: ../../../gproSVN/search.php:51
+msgid "Nothing Found"
+msgstr "No se encontró nada"
+
+#: ../../../gproSVN/search.php:53
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr "Lo sentimos pero no se encontró nada. Inténtalo de nuevo con otros términos."
+
+#: ../../../gproSVN/sidebar.php:6
+#: ../../../gproSVN/sidebar.php:10
+msgid "Search"
+msgstr "Buscar"
+
+#: ../../../gproSVN/sidebar.php:16
+msgid "Pages"
+msgstr "Páginas"
+
+#: ../../../gproSVN/sidebar.php:23
+msgid "Categories"
+msgstr "Categorías"
+
+#: ../../../gproSVN/sidebar.php:31
+msgid "Archives"
+msgstr "Archivos"
+
+#: ../../../gproSVN/sidebar.php:50
+msgid "RSS Feeds"
+msgstr "RSS-Feeds"
+
+#: ../../../gproSVN/sidebar.php:52
+#: ../../../gproSVN/library/extensions/hooks-filters.php:391
+msgid "Posts RSS feed"
+msgstr "Publicar Feed de RSS"
+
+#: ../../../gproSVN/sidebar.php:52
+msgid "All posts"
+msgstr "Todas las entradas"
+
+#: ../../../gproSVN/sidebar.php:53
+#: ../../../gproSVN/library/extensions/hooks-filters.php:409
+msgid "Comments RSS feed"
+msgstr "RSS de los comentarios"
+
+#: ../../../gproSVN/sidebar.php:53
+msgid "All comments"
+msgstr "Todos los comentarios"
+
+#: ../../../gproSVN/sidebar.php:58
+msgid "Meta"
+msgstr "Info"
+
+#: ../../../gproSVN/tag.php:13
+#: ../../../gproSVN/library/extensions/hooks-filters.php:207
+msgid "Tag Archives:"
+msgstr "Archivo de tags"
+
+#: ../../../gproSVN/library/extensions/discussion.php:10
+#, php-format
+msgid "Posted %1$s at %2$s <span class=\"meta-sep\">|</span> <a href=\"%3$s\" title=\"Permalink to this comment\">Permalink</a>"
+msgstr "Publicado %1$s en %2$s <span class=\"meta-sep\">|</span> <a href=\"%3$s\" title=\"Permalink a este comentario\">Permalink</a>"
+
+#: ../../../gproSVN/library/extensions/discussion.php:15
+msgid "\t\t\t\t\t<span class='unapproved'>Your comment is awaiting moderation.</span>\n"
+msgstr "\t\t\t\t\t<span class='unapproved'>Tu comentario está esperando moderación.</span>\n"
+
+#: ../../../gproSVN/library/extensions/discussion.php:22
+msgid "Reply"
+msgstr "Responder"
+
+#: ../../../gproSVN/library/extensions/discussion.php:23
+msgid "Log in to reply."
+msgstr "Logueate para responder."
+
+#: ../../../gproSVN/library/extensions/discussion.php:37
+#, php-format
+msgid "By %1$s on %2$s at %3$s"
+msgstr "Por %1$s el %2$s a las %3$s"
+
+#: ../../../gproSVN/library/extensions/discussion.php:42
+msgid "\\t\\t\\t\\t\\t<span class=\"unapproved\">Your trackback is awaiting moderation.</span>\\n"
+msgstr "\\t\\t\\t\\t\\t<span class=\"unapproved\">Tu trackback está esperando moderación.</span>\\n"
+
+#: ../../../gproSVN/library/extensions/helpers.php:31
+#: ../../../gproSVN/library/extensions/helpers.php:44
+msgid "There is no excerpt because this is a protected post."
+msgstr "No hay excerpt porque este post está protegido."
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:61
+msgid "Skip navigation to the content"
+msgstr "Saltar al contenido"
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:61
+msgid "Skip to content"
+msgstr "Saltar al contenido"
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:211
+#: ../../../gproSVN/library/extensions/hooks-filters.php:498
+msgid "Not Found"
+msgstr "No se encontró"
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:490
+#: ../../../gproSVN/library/extensions/hooks-filters.php:545
+msgid "Edit post"
+msgstr "Editar entrada"
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:503
+#: ../../../gproSVN/library/extensions/hooks-filters.php:598
+msgid "Permalink to "
+msgstr "Permalink de"
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:512
+msgid "By "
+msgstr "Por "
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:514
+msgid "View all posts by "
+msgstr "Ver todas las entradas por "
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:517
+msgid "Published: "
+msgstr "Publicado: "
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:552
+msgid "This entry was posted in "
+msgstr "Esta entrada fue publicada en "
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:555
+msgid "Also posted in "
+msgstr "También publicada en "
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:558
+msgid "Posted in "
+msgstr "Publicada en "
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:565
+msgid " and tagged"
+msgstr "y clasificada en "
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:568
+msgid " Also tagged "
+msgstr "También clasificada en "
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:570
+msgid "Tagged"
+msgstr "Etiquetas"
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:579
+#: ../../../gproSVN/library/extensions/hooks-filters.php:582
+#: ../../../gproSVN/library/extensions/hooks-filters.php:585
+msgid "Comment on "
+msgstr "Comentar "
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:580
+msgid " Comments"
+msgstr " Comentarios"
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:583
+msgid " Comment"
+msgstr " Comentar"
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:586
+msgid "Leave a comment"
+msgstr "Dejar un comentario"
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:589
+msgid "Comments closed"
+msgstr "Comentarios cerrados"
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:598
+msgid ". Bookmark the "
+msgstr ". Ir al "
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:599
+msgid "permalink"
+msgstr "permalink"
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:601
+#: ../../../gproSVN/library/extensions/hooks-filters.php:609
+msgid "Post a comment"
+msgstr "Publicar un comentario"
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:602
+msgid " or leave a trackback: "
+msgstr " o dejar un trackback: "
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:603
+#: ../../../gproSVN/library/extensions/hooks-filters.php:606
+msgid "Trackback URL for your post"
+msgstr "URL del Trackback  para tu entrada"
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:603
+#: ../../../gproSVN/library/extensions/hooks-filters.php:606
+msgid "Trackback URL"
+msgstr "URL del Trackback"
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:605
+msgid " Comments are closed, but you can leave a trackback: "
+msgstr " Los comentarios están cerrados, pero puedes dejar un trackback: "
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:608
+msgid " Trackbacks are closed, but you can "
+msgstr " Los trackbacks están cerrados pero puedes "
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:609
+msgid "post a comment"
+msgstr "publicar un comentario"
+
+#: ../../../gproSVN/library/extensions/hooks-filters.php:611
+msgid " Both comments and trackbacks are currently closed."
+msgstr "Tanto los comentarios como los trackbacks están cerrados."
+
+#: ../../../gproSVN/library/extensions/shortcodes.php:16
+msgid "Login"
+msgstr "Login"
+
+#: ../../../gproSVN/library/extensions/shortcodes.php:18
+msgid "Logout"
+msgstr "Logout"
+
+#: ../../../gproSVN/library/extensions/theme-options.php:13
+msgid "Index Insert Position"
+msgstr "Índice de inserción"
+
+#: ../../../gproSVN/library/extensions/theme-options.php:14
+msgid "The widgetized Index Insert will follow after this post number."
+msgstr "El widget insertado en \"Index insert\" se mostrará trás el post con este número."
+
+#: ../../../gproSVN/library/extensions/theme-options.php:19
+msgid "Info on Author Page"
+msgstr "Información en la página del autor"
+
+#: ../../../gproSVN/library/extensions/theme-options.php:20
+msgid "Display a <a href=\"http://microformats.org/wiki/hcard\" target=\"_blank\">microformatted vCard</a>—with the author's avatar, bio and email—on the author page."
+msgstr "Mostrar una <a href=\"http://microformats.org/wiki/hcard\" target=\"_blank\">vCard con microformato</a>—con el avatar del autor, su bio y su email, en la página de autor."
+
+#: ../../../gproSVN/library/extensions/theme-options.php:25
+msgid "Text in Footer"
+msgstr "Texto en el Footer (píe)"
+
+#: ../../../gproSVN/library/extensions/theme-options.php:26
+msgid "You can use the following shortcodes in your footer text: [wp-link] [theme-link] [loginout-link] [blog-title] [the-year]"
+msgstr "Puedes usar los siguientes \"shortcodes\" en el texto del píe: [wp-link] [theme-link] [loginout-link] [blog-title] [the-year]"
+
+#: ../../../gproSVN/library/extensions/theme-options.php:28
+msgid "Powered by [wp-link]. Built on the [theme-link]."
+msgstr "Powered by [wp-link]. Diseñado sobre [theme-link]."
+
+#: ../../../gproSVN/library/extensions/theme-options.php:76
+msgid "settings saved."
+msgstr "opciones guardadas."
+
+#: ../../../gproSVN/library/extensions/theme-options.php:77
+msgid "settings reset."
+msgstr "Opciones borradas."
+
+#: ../../../gproSVN/library/extensions/theme-options.php:78
+msgid "widgets reset."
+msgstr "widgets borrados."
+
+#: ../../../gproSVN/library/extensions/theme-options.php:191
+msgid "Save changes"
+msgstr "Guardar cambios"
+
+#: ../../../gproSVN/library/extensions/theme-options.php:197
+msgid "Reset"
+msgstr "Borrar"
+
+#: ../../../gproSVN/library/extensions/theme-options.php:203
+msgid "Reset Widgets"
+msgstr "Borrar Widgets"
+
+#: ../../../gproSVN/library/extensions/theme-options.php:208
+msgid "For more information about this theme, <a href=\"http://themeshaper.com\">visit ThemeShaper</a>. Please visit the <a href=\"http://themeshaper.com/forums/\">ThemeShaper Forums</a> if you have any questions about Thematic."
+msgstr "Para más información sobre este tema, <a href=\"http://themeshaper.com\">visita ThemeShaper</a>. Puedes visitar el <a href=\"http://themeshaper.com/forums/\">Forum de ThemeShaper</a> si tienes preguntas sobre Thematic."
+
+#: ../../../gproSVN/library/extensions/widgets.php:55
+#: ../../../gproSVN/library/extensions/widgets.php:245
+#: ../../../gproSVN/library/extensions/widgets.php:246
+msgid "RSS Links"
+msgstr "Enlaces RSS"
+
+#: ../../../gproSVN/library/extensions/widgets.php:79
+msgid "Title:"
+msgstr "Título:"
+
+#~ msgid "Blog Index"
+#~ msgstr "Indice del blog"
+

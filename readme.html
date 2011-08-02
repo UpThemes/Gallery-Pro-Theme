@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<title>Getting Started with Gallery Pro</title>
+<meta name="robots" content="index,nofollow,noodp,noydir" />
+</head>
+<body>
+<div class="wrapper">
+<h1>Getting Started with Gallery Pro</h1>
+<p class="intro">Gallery Pro is a flexible, beautiful showcase-style WordPress theme with a very flexible layout, the ability to change thumbnail sizes, post videos, and more!</p>
+
+<a href="#install">Skip to Installation Instructions</a>
+
+<h2>Features</h2>
+<p>Gallery Pro offers some robust but easy-to-use features:</p>
+<ul>
+  <li>
+    <h3>Two Beautiful Color Schemes</h3>
+    <p>In addition to the original Gallery dark theme, there is now a light theme as well, which can be enabled on the Gallery Pro Options page.</p>
+  </li>
+  <li>
+    <h3>Alternate Blog Post Template</h3>
+    <p>By popular demand, there is now an alternate blog post template that can be enabled on a per-post basis. Simply edit the post, scroll to the bottom of the edit page, and quickly and easily switch the page template.</p>
+  </li>
+  <li>
+    <h3>Simple Video Embedding</h3>
+    <p>Included with the original Gallery theme, the ability to share videos using the Simple Video Embedder plugin from Press75.com is still here and the videos have been resized to better fit the theme. Requires installation of Simple Video Embedder plugin, download separately.</p>
+  </li>
+  <li>
+    <h3>iPhone Template</h3>
+    <p>Located in the content area of the index, or blog page. Empty of widgets by default, they will not apear in the theme markup until you add a widget. The location of the <em>Index Insert</em>, which appears between posts, is controlled from the theme options page. The default position sets it to appear after the second post.</p>
+  </li>
+  <li>
+    <h3>Resizable Thumbnails</h3>
+    <p>No longer fixed at 125x125, thumbnail sizes are completely under your control! Just set your desired thumbnail size in the Gallery Pro Options page.</p>
+  </li>
+  <li>
+    <h3>Automatic Image Resizing</h3>
+    <p>Gallery Pro now uses TimThumb by Darren Hoyt to resize thumbnails and images within posts. That means all you need to do is upload at least a large image for each post and you're ready to go. No more manual image resizing/multiple uploads.</p>
+  </li>
+  <li>
+    <h3>Image Gallery with Lightbox</h3>
+    <p>Now a built-in feature of Gallery Pro, simply upload full-size images with the default WordPress image uploader and Gallery Pro will automagically add a gallery to your post with a lightbox for large images!</p>
+  </li>
+  <li>
+    <h3>WP-PageNavi Built-in</h3>
+    <p>Another new feature, WP-PageNavi is now built-in to Gallery Pro, offering easy page navigation for all!</p>
+  </li>
+  <li>
+    <h3>Ad Zones Built-in</h3>
+    <p>There are now two ad zones that accept plain HTML and Javascript below the header and above the footer.</p>
+  </li>
+  <li>
+    <h3>New! Add a sidebar to your Homepage and Category Pages</h3>
+    <p>There is a new option to show your sidebar on the homepage and category pages along with the ability to control the width of the sidebar as well, giving you extra control over the layout of Gallery Pro.</p>
+  </li>
+</ul>
+
+<h2><a id="install"></a>Installing Gallery Pro</h2>
+
+<ol>	
+	<li>Unzip the Gallery Pro ZIP file to your My Documents folder.</li>
+	<li>Upload <code>/gallerypro/</code> folder all files within to your <code>/wp-content/themes/</code> directory using an FTP program.</li>
+	<li>Using DreamWeaver or FileZilla (or a similar program that allows you to change remote folder permissions) CHMOD the following folders to 777:
+		<ul>
+			<li><code>/gallerypro/uploads/</code></li>
+			<li><code>/gallerypro/timthumb/cache/</code></li>
+		</ul>
+	</li>
+	<li>In your WordPress admin, visit the UpThemes Framework theme options page and set up the various options you require.</li>
+	<li>After that's done, go to <em>Settings</em> > <em>Reading</em> and set "Blog pages to show at most" to a number that makes your images end at the end of the last row of thumbails. For three across, I recommend 12 or 15, for 4 across, 12 or 16.</li>
+	<li><strong>And you're off!</strong> Start building your gallery!</li>
+</ol>
+
+<h3>Install Plugins</h3>
+
+<p>Optionally, you should install the following plugins to really make your installation of Gallery Pro awesome.</p>
+
+<ul>
+	<li><a href="http://www.press75.com/the-simple-video-embedder-wordpress-plugin/">Simple Video Embedder</a></li>
+	<li><a href="http://wordpress.org/extend/plugins/custom-post-template/">Custom Post Templates</a></li>
+	<li><a href="http://thedeadone.net/download/tdo-mini-forms-wordpress-plugin/">TDO Mini-Forms</a></li>
+	<li><a href="http://wordpress.org/extend/plugins/wp-postratings/">WP-PostRatings</a></li>
+</ul>
+
+<h2>Additional Instructions</h2>
+
+<h3>Adding Gallery Items</h3>
+<p>To add gallery items, all you need to do is create a new post, upload an image greater than 500x375 pixels, select a category, and publish the post. DO NOT insert the image into the body of your post. This will result in an image on the right side of the page. If this is what you want, then ignore this warning. To create a lightbox image slider for the post, simply add multiple images to the post. Again, you do not need to post the image in the body of your post for Gallery Pro to do its thing.</p>
+
+<h3>Disabling Timthumb and using the WordPress Media Library</h3>
+<p><strong>Note: When changing media sizes in your settings, WordPress will NOT resize images that have already been added. You will want to install the Regenerate Thumbnails plugin, which resizes all your images to the correct WordPress media sizes if you've recently changed them.</strong></p>
+<p>If you want to avoid using Timthumb and just use the media library settings provided by WordPress, which is completely acceptable (and recommended), you need to follow the following instructions to set it up.</p>
+<p>Please note that if you are upgrading from an older version of Gallery or Gallery Pro and turn off timthumb, your images will most likely be the wrong sizes. This option is recommended mainly for new sites using the Gallery Pro theme, as they will start out with no images.</p>
+<p>Once you've decided what size thumbnails to use, you should go into <strong>Settings/Media</strong> and set your thumbnail size to the size you've defined in your Gallery Pro Options page then set your medium size to 500x375, and large size to 1000x1000 or something in that range.</p>
+
+<h3>Create a User Submission Page</h3>
+<p><strong>Note: I cannot provide an import file for this step because every install is different and I cannot create an import file that everyone can use.</strong></p>
+<ol>
+  <li>Install the TDO Mini-Forms plugin. Activate it.</li>
+  <li>Go to the Form Creator from the TDO Mini-Forms menu. Add the widgets to and from the form that you require users to fill out when submitting. My form contains the following:
+	<ul>
+		<li>Upload Files 1 (adds a file upload field)</li>
+		<li>Custom Fields 1 (on options page for this item - Title: Designer Name - Custom Field Key: designed-by)</li>
+		<li>Custom Fields 2 (on options page for this item - Title: Website URL - Custom Field Key: web-url)</li>
+		<li>Content</li>
+		<li>Categories 1</li>
+		<li>Tags</li>
+		<li>Notify Me</li>
+	</ul>
+  </li>
+  <li>Add the shortcode for your form to one of your WordPress pages or use TDO Mini-Forms admin to assign a page for this.</li>
+  <li>Styling the page is not easy. TDO Mini-Forms has its own CSS file for the file uploader. Try editing the file tdomf-style-form.css in that plugins folder to achieve the right CSS for that piece.</li>
+  <li>If you need any support for this form, please visit the <a href="http://thedeadone.net/forum/">TDO Mini-Forms support site</a>.</li>
+</ol>
+
+<h3>Add Star Ratings</h3>
+<ol>
+  <li>Install the <a href="http://wordpress.org/extend/plugins/wp-postratings/">WP-Post Ratings plugin</a> from WordPress.org. Activate both the plugin and the widgets.</li>
+  <li>To switch the type of images to transparent .PNGs, open wp-content/plugins/wp-postratings/wp-postratings.php in a text editor and change the following lines (should be near the top of the document):<br /><br />
+    <p>### Define Image Extension<br />
+      define(&#39;RATINGS_IMG_EXT&#39;, &#39;gif&#39;);<br />
+      //define(&#39;RATINGS_IMG_EXT&#39;, &#39;png&#39;);</p>
+    <p>to match this:</p>
+    <p>### Define Image Extension<br />
+      //define(&#39;RATINGS_IMG_EXT&#39;, &#39;gif&#39;);<br />
+      define(&#39;RATINGS_IMG_EXT&#39;, &#39;png&#39;);</p>
+  </li>
+  <li>Then upload that file back into the plugins folder.</li>
+  <li>In your WordPress admin panel, click the Ratings &gt; Options link on the left sidebar.</li>
+  <li>The transparent .PNG stars should be selected by default.</li>
+  <li>Under &#39;Ratings AJAX Style&#39; change &#39;Show Loading Image With Text&#39; to &#39;No&#39; and &#39;Show Fading In And Fading Out Of Ratings&#39; to &#39;No.&#39;</li>
+  <li>Click &#39;Save Changes.&#39;</li>
+  <li>Now click the &#39;Ratings Templates&#39; on the left sidebar.</li>
+  <li>Replace the text in the &#39;Ratings Vote Text&#39; box with the following code:
+    <p><strong>%RATINGS_IMAGES_VOTE%</strong></p>
+  </li>
+  <li>Replace the text in the &#39;Ratings Voted Text&#39; with the following code:
+    <p><strong>%RATINGS_IMAGES%</strong></p>
+  </li>
+  <li>Click the &#39;Save&#39; button.</li>
+  <li>You should now see your star ratings show on the gallery single pages next to the title of the gallery item.</li>
+</ol>
+
+<h3>Using the Custom iPhone Post Template</h3>
+<p><strong>Note: Requires Custom Post Template plugin.</strong></p>
+<ol>
+	<li>Create a new post or Edit an old one.</li>
+	<li>Upload an image to that specific post, making sure the image is sized at 223x334.</li>
+	<li>Copy the location of that image.</li>
+	<li>Paste the image path into the "full-size image" field in the Custom Post Settings.</li>
+	<li>In the Post Template widget, select the iPhone template.</li>
+	<li>Publish the post.</li>
+</ol>
+
+<h3>Using the Custom Blog Post Template</h3>
+<p><strong>Note: Requires Custom Post Template plugin.</strong></p>
+<p>Gallery Pro comes with a blog template that can be used for normal blog entries.</p>
+<ol>
+	<li>Create a new blog post or edit an existing one.</li>
+	<li>In the Post Template widget, select the Blogpost template.</li>
+	<li>Publish the post.</li>
+</ol>
+
+<h3>Adding Advertisements to your Site</h3>
+
+<h4>Using the Built-In Header and Footer ad zones (recommended)</h4>
+<ol>
+	<li>Go to Gallery Pro Options.</li>
+	<li>Enter the HTML or Javascript from your ad company into the Ads Below Header or Ads Below Footer area.</li>
+	<li>Click Save changes.</li>
+</ol>
+
+<h4>Using Widgets</h4>
+<ol>
+	<li>Go to Widgets.</li>
+	<li>On the right side, there will be a set of widget zones for Index, Single, and Page. This allows you to add widgets to different sections of your site</li>
+	<li>From the list of widgets, select a Text widget and drag it over to the zone you want the ads to be shown in.</li>
+	<li>Enter the ad code into the textbox and save it.</li>
+</ol>
+
+<h3>Adding Widgets to the Footer</h3>
+<ol>
+  <li>Make sure you activated the WP-Post Ratings widgets when you activated the plugin.</li>
+  <li>In your WordPress Admin, click Widgets on the sidebar.</li>
+  <li>From the drop-down box under &#39;Current Widgets&#39; select &#39;1st Subsidiary Aside&#39; and click &#39;Show.&#39;</li>
+  <li>Drag the widgets you&#39;d like to see shown in this area from left to right (Highest Rated, Most Rated, Recent Comments, etc.)</li>
+  <li>Click &#39;Save.&#39;</li>
+  <li>You should now see your widgets in the footer.</li>
+</ol>
+
+<h3>Using Videos in Posts</h3>
+<p>Gallery Pro works with the <a href="http://www.press75.com">Simple Video Embedder</a> plugin from Press75.com.</p>
+<ol>
+	<li>Install and activate the Simple Video Embedder plugin.</li>
+	<li>Go to the Video Options (on the left under Settings) page and set them to a default width of 500 and height of 306.</li>
+	<li>On the post page, simply enter the URL of the video into the Video URL box (in the Post Video Options widget).</li>
+	<li>Click Update Post.</li>
+</ol>
+
+<h2>Troubleshooting</h2>
+<h3>Trouble with Timthumb/Images Not Displaying Properly</h3>
+<h4>Images Must Reside on your Server</h4>
+<p>You cannot use images hosted on Amazon S3 or on another server, they must be local, otherwise the script will not work.</p>
+<h4>Cache Folder Must Have Permissions set to 755 or 777 (if allowed by host)</h4>
+<p>Some webhosts do not allow 777 but you do need to have the /gallerypro/timthumb/cache folder chmodded to 755 at the very least.</p>
+<h3>Timthumb Does Not Work Locally</h3>
+<p>If you plan to test locally, you will not be able to view images using timthumb.</p>
+<h3>If It Still Doesn't Work Right</h3>
+<p><strong>If you still have problems with images loading after ensuring all these steps have been taken, there is a setting on the Gallery Pro Theme Options page that allows you to turn Timthumb off completely. If you use this option, you MUST set up your thumbnails and medium-size images to the correct sizes for them to work properly. These can be set  in Settings &gt; Media. You need to set your thumbnail size to the exact size of the thumbnail size you set in the Gallery Pro Options page and set the medium size to 500x375.</strong></p>
+</div>
+</body>
+</html>

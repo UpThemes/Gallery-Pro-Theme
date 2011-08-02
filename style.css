@@ -1,0 +1,141 @@
+/*
+Theme Name: Gallery Pro
+Theme URI: http://upthemes.com/themes/gallerypro/
+Description: The ultimate Gallery-style WordPress theme.
+Author: Chris Wallace for UpThemes
+Author URI: http://www.upthemes.com
+Version: 2.5
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+*/
+
+/* Reset browser defaults */
+@import url('library/styles/reset.css');
+
+/* Set Default Typography */
+@import url('library/styles/typography.css');
+
+/* Apply a basic layout */
+@import url('library/layouts/2c-r-fixed.css');
+
+/* Apply basic image styles */
+@import url('library/styles/images.css');
+
+/* WP Default Styles */
+.entry-content .aligncenter, .entry-content div.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.entry-content .alignleft {
+	float: left;
+}
+.entry-content .alignright {
+	float: right;
+}
+.entry-content .wp-caption {
+	background-color: #f3f3f3;
+	border: 1px solid #ddd;
+	-khtml-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px; /* optional rounded corners for browsers that support it */
+	margin: 10px;
+	padding-top: 4px;
+	text-align: center;
+}
+.entry-content .wp-caption img {
+	border: 0 none;
+	margin: 0;
+	padding: 0;
+}
+.entry-content .wp-caption p.wp-caption-text {
+	font-size: 11px;
+	line-height: 17px;
+	margin: 0;
+	padding: 0 4px 5px;
+}
+
+
+.aside input[type="text"]{
+	width: 93%;
+	margin-bottom: 10px;
+}
+
+.aside{
+	font-size: 0.8em;
+}
+
+.aside h3.widgettitle{
+  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0;
+}
+
+#index-insert,
+#index-insert ul.xoxo,
+#index-insert ul.xoxo li.widgetcontainer,
+#index-insert ul.xoxo li.widgetcontainer div.textwidget{
+	width: auto;
+	margin: 0;
+	padding: 0;
+}
+
+.search-results .hentry{
+	padding: 20px 0;
+	border-top: 1px solid rgba(255,255,255,0.1);
+	margin-right: 20px;
+}
+
+.search-results .hentry:last-child{
+	border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.search-results h2.entry-title{
+	font-size: 1.4em;
+	margin: 0;
+	padding: 0;
+	clear: none;
+}
+
+.search-results .hentry .entry-meta,
+.search-results .hentry .entry-utility{
+	margin: 0.5em 0;
+	padding: 0;
+}
+
+.search-results div.entry-content{
+	display: block;
+	float: none;
+	width: auto;
+	margin: 0;
+	padding: 0;
+	font-size: 1em;
+}
+
+.search-results div.hentry .entry-utility{
+	border-top: 0;
+}
+
+.search-results .attachment-thumbnail{
+	float: right;
+	margin: 0 0 10px 10px;
+}
+
+.search-no-results div.entry-content{
+	display: block;
+	float: none;
+	width: auto;
+}
+
+.clear{
+	content: ".";
+	display: block;
+	overflow: hidden;
+	height: 0;
+	visibility: hidden;
+	clear: both;
+}
