@@ -356,7 +356,7 @@ function single_postmedia_handler(){
 add_action('single_postmedia','single_postmedia_handler');
 
 function rssfeed(){ ?>
-    <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> &raquo; <?php _e('Feed','gpro'); ?>" href="<?php rss(); ?>" />
+    <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> &raquo; <?php _e('Feed','gpro'); ?>" href="<?php upfw_rss(); ?>" />
 <?php }
 add_action('wp_head','rssfeed',1);
 
