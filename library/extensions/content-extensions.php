@@ -198,7 +198,7 @@ add_action('gpro_navigation_above', 'gpro_nav_above', 2);
 // The Archive Loop
 function gpro_archive_loop() {
     while ( have_posts() ) : the_post(); ?>
-        <div id="post-<?php the_ID() ?>" class="<?php gpro_post_class() ?>">
+        <div id="post-<?php the_ID() ?>" class="<?php post_class(); ?>">
     	    <?php gpro_postheader(); ?>
 	    <div class="entry-content">
                 <?php gpro_content(); ?>
@@ -213,7 +213,7 @@ add_action('gpro_archiveloop', 'gpro_archive_loop');
 function gpro_author_loop() {
     rewind_posts();
     while (have_posts()) : the_post(); ?>
-	<div id="post-<?php the_ID(); ?>" class="<?php gpro_post_class(); ?>">
+	<div id="post-<?php the_ID(); ?>" class="<?php post_class(); ?>">
     	    <?php gpro_postheader(); ?>
 	    <div class="entry-content ">
                 <?php gpro_content(); ?>
@@ -227,7 +227,7 @@ add_action('gpro_authorloop', 'gpro_author_loop');
 // The Category Loop
 function gpro_category_loop() {
     while (have_posts()) : the_post(); ?>
-	<div id="post-<?php the_ID(); ?>" class="<?php gpro_post_class(); ?>">
+	<div id="post-<?php the_ID(); ?>" class="<?php post_class(); ?>">
     	    <?php gpro_postheader(); ?>
 	    <div class="entry-content">
                 <?php gpro_content(); ?>
@@ -242,7 +242,7 @@ add_action('gpro_categoryloop', 'gpro_category_loop');
 function gpro_index_loop() {
     /* Count the number of posts so we can insert a widgetized area */ $count = 1;
     while ( have_posts() ) : the_post() ?>
-        <div id="post-<?php the_ID() ?>" class="<?php gpro_post_class() ?>">
+        <div id="post-<?php the_ID() ?>" class="<?php post_class(); ?>">
             <?php gpro_postheader(); ?>
             <div class="entry-content">
                 <?php gpro_content(); ?>
@@ -262,7 +262,7 @@ add_action('gpro_indexloop', 'gpro_index_loop');
 
 // The Single Post
 function gpro_single_post() { ?>
-    <div id="post-<?php the_ID(); ?>" class="<?php gpro_post_class(); ?>">
+    <div id="post-<?php the_ID(); ?>" class="<?php post_class(); ?>">
         <?php gpro_postheader(); ?>
         <div class="entry-content">
             <?php gpro_content(); ?>
@@ -276,7 +276,7 @@ add_action('gpro_singlepost', 'gpro_single_post');
 // The Search Loop
 function gpro_search_loop() {
     while ( have_posts() ) : the_post(); ?>
-	<div id="post-<?php the_ID() ?>" class="<?php gpro_post_class() ?>">
+	<div id="post-<?php the_ID() ?>" class="<?php post_class(); ?>">
     	    <?php if(has_post_thumbnail()): ?>
     		<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
     	    <?php endif; ?>
@@ -294,7 +294,7 @@ add_action('gpro_searchloop', 'gpro_search_loop');
 // The Tag Loop
 function gpro_tag_loop() {
     while (have_posts()) : the_post(); ?>
-	<div id="post-<?php the_ID(); ?>" class="<?php gpro_post_class(); ?>">
+	<div id="post-<?php the_ID(); ?>" class="<?php post_class(); ?>">
     	    <?php gpro_postheader(); ?>
 	    <div class="entry-content">
                 <?php gpro_content() ?>
