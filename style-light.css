@@ -185,7 +185,7 @@ h2{
 .single #content li{
   line-height: 1.4em;
 }
-.single #content ul{
+.single #content .hentry ul{
   border-top: 1px solid #F2F2F2;
   border-bottom: 1px solid #ccc;
 }
@@ -451,7 +451,7 @@ body #access #category-menu .sf-menu ul a {
 }
 
 .page #primary,
-.post-temp-blog-php #primary{
+.post-template-blog-php #primary{
   display: block;
 }
 .aside{
@@ -472,7 +472,7 @@ body #access #category-menu .sf-menu ul a {
 	margin-top: 20px;
 }
 .page #content,
-.post-temp-blog-php #content{
+.post-template-blog-php #content{
   width: 620px;
 }
 .page #content li{
@@ -488,13 +488,13 @@ body #access #category-menu .sf-menu ul a {
   margin: 20px 0 0 578px;
   width: 348px;
 }
-.post-temp-blog-php .entry-content{
+.post-template-blog-php .entry-content{
 	display: block;
   float: none;
   margin: 0;
   width: auto;
 }
-body.post-temp-iphone-php div.entry-content{
+body.post-template-iphone-php div.entry-content{
   margin:20px 0 0 435px;
   width:500px;
 }
@@ -502,11 +502,11 @@ body.post-temp-iphone-php div.entry-content{
   float: left;
   margin-left: -924px;
 }
-body.post-temp-iphone-php div.artwork-container{
+body.post-template-iphone-php div.artwork-container{
   float: left;
   margin-left: -924px;
 }
-body.post-temp-iphone-php div.artwork-container img{
+body.post-template-iphone-php div.artwork-container img{
   width: 223px;	
 }
 .single .entry-artwork{
@@ -547,7 +547,7 @@ body.post-temp-iphone-php div.artwork-container img{
 	padding: 3px 6px;
 }
 
-body.post-temp-iphone-php div.entry-artwork{
+body.post-template-iphone-php div.entry-artwork{
   background: transparent url("images/light/iphone-background-trans.png") no-repeat top center;
   height: 626px;
   width: 400px;
@@ -556,7 +556,7 @@ body.post-temp-iphone-php div.entry-artwork{
   position: relative;
 	margin-bottom: 0;
 }
-body.post-temp-iphone-php div.entry-artwork img{
+body.post-template-iphone-php div.entry-artwork img{
   position: absolute;
   top: 83px;
   left: 90px;
@@ -576,7 +576,7 @@ h1.page-title{
 .single .entry-content p{
   line-height: 1.3em;
 }
-.post-temp-blog-php .entry-artwork{
+.post-template-blog-php .entry-artwork{
 	display: none;	
 }
 .not-singular .entry-content{
@@ -811,7 +811,7 @@ a.more-link .meta-nav {
 	padding:0 0 18px;
 	width:525px;
 }
-.post-temp-blog-php #comments-list{
+.post-template-blog-php #comments-list{
   width: 100%;	
 }
 #comments-list ol,#comments-list ul {
@@ -883,7 +883,7 @@ a.more-link .meta-nav {
   padding: 0;
   width: 350px;
 }
-.post-temp-blog-php #commentform{
+.post-template-blog-php #commentform{
 	width: 100%;
 }
 .comment-reply-link {
@@ -941,7 +941,7 @@ a.more-link .meta-nav {
   float: none;
   width: 520px;
 }
-.post-temp-blog-php #respond{
+.post-template-blog-php #respond{
 	float: none;
 	width: 100%;
 	clear: both;
@@ -1209,11 +1209,11 @@ div.wpcf7-response-output{
   display: none;
 }
 
-.post-temp-iphone-php .jFlowSlideContainer img{
+.post-template-iphone-php .jFlowSlideContainer img{
 	display: none;
 }
 
-.post-temp-iphone-php .jFlowSlideContainer:first-child img{
+.post-template-iphone-php .jFlowSlideContainer:first-child img{
 	display: block;
 }
 
