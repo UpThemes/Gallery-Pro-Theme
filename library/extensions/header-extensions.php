@@ -13,98 +13,102 @@ function pageGetPageNo() {
     }
 } // end pageGetPageNo
 
-function set_sidebar_styles(){
+function gpro_set_sidebar_styles(){
+	if ( ! is_admin() ) {
 
-    global $up_options;
-    
-    if((is_page() || is_search()) || ($up_options->showsidebar && (is_search() || is_page() || is_category() || is_archive || is_home() || is_front_page() || is_tag()))):?>
-        <style type="text/css">
-            #container,#content{ width: <?php echo 940-(int)$up_options->sidebarwidth."px"; ?>; margin: 0; padding: 0; }
-            #primary,#secondary{ width: <?php echo (int)$up_options->sidebarwidth."px"; ?>; margin: 0; padding: 0;}
-            .page #container, .page #content, .post-temp-blog-php #container, .post-temp-blog-php #content { width: <?php echo 940-20-(int)$up_options->sidebarwidth."px"; ?>; margin: 10px 0 0 0; padding: 0; }            
-            <?php if(is_category()){ ?>
-                #primary{margin-top: 52px;}
-            <?php } ?>
-        </style>
-    <?php endif;
+		global $up_options;
+		
+		if((is_page() || is_search()) || ($up_options->showsidebar && (is_search() || is_page() || is_category() || is_archive || is_home() || is_front_page() || is_tag()))):?>
+			<style type="text/css">
+				#container,#content{ width: <?php echo 940-(int)$up_options->sidebarwidth."px"; ?>; margin: 0; padding: 0; }
+				#primary,#secondary{ width: <?php echo (int)$up_options->sidebarwidth."px"; ?>; margin: 0; padding: 0;}
+				.page #container, .page #content, .post-temp-blog-php #container, .post-temp-blog-php #content { width: <?php echo 940-20-(int)$up_options->sidebarwidth."px"; ?>; margin: 10px 0 0 0; padding: 0; }            
+				<?php if(is_category()){ ?>
+					#primary{margin-top: 52px;}
+				<?php } ?>
+			</style>
+		<?php endif;
+	}
 }
-add_action('wp_head','set_sidebar_styles');
+add_action( 'wp_print_styles', 'gpro_set_sidebar_styles' );
 
 // Add fix for ie6 styles
-function fix_ie6(){
-    global $up_options;
-    echo '<!--[if IE 6]><script src="' . get_bloginfo('template_directory') . '/js/DD_belatedPNG.js" type="text/javascript"></script>';
-    if($up_options->theme=='dark'){
-	echo '<script type="text/javascript">
-            DD_belatedPNG.fix("body,#wrapper, ul.meta li,#blog-title a,#access,#access a,.twitter,.delicious,#blog-title a,#page-nav li.rss a,.s-category-iphone .entry-artwork,.new,.cover-up,#comments h3,#comments-list ul.children li,.home a");
-	</script>';
-    } elseif($up_options->theme =='light') {
-	echo '<script type="text/javascript">
-            DD_belatedPNG.fix("body,ul.meta li,#blog-title a,.twitter,.delicious,#blog-title a,#page-nav li.rss a,.s-category-iphone .entry-artwork,.new,.cover-up,#comments h3,#comments-list ul.children li");
-	</script>';
-    }
-    echo '<style type="text/css">
-            .post-temp-blog-php #container{
-                height: auto;
-                overflow: hidden;
-            }
-            .singular .artwork-container{
-                overflow: visible;
-                margin: -170px 0 0 0;
-                padding: 0;
-            }
-        </style><![endif]-->
-    ';
+function gpro_fix_ie6(){
+	if ( ! is_admin() ) {
+		global $up_options;
+		echo '<!--[if IE 6]><script src="' . get_bloginfo('template_directory') . '/js/DD_belatedPNG.js" type="text/javascript"></script>';
+		if($up_options->theme=='dark'){
+		echo '<script type="text/javascript">
+				DD_belatedPNG.fix("body,#wrapper, ul.meta li,#blog-title a,#access,#access a,.twitter,.delicious,#blog-title a,#page-nav li.rss a,.s-category-iphone .entry-artwork,.new,.cover-up,#comments h3,#comments-list ul.children li,.home a");
+		</script>';
+		} elseif($up_options->theme =='light') {
+		echo '<script type="text/javascript">
+				DD_belatedPNG.fix("body,ul.meta li,#blog-title a,.twitter,.delicious,#blog-title a,#page-nav li.rss a,.s-category-iphone .entry-artwork,.new,.cover-up,#comments h3,#comments-list ul.children li");
+		</script>';
+		}
+		echo '<style type="text/css">
+				.post-temp-blog-php #container{
+					height: auto;
+					overflow: hidden;
+				}
+				.singular .artwork-container{
+					overflow: visible;
+					margin: -170px 0 0 0;
+					padding: 0;
+				}
+			</style><![endif]-->
+		';
+	}
 }
-add_action('wp_head','fix_ie6');
+add_action( 'wp_print_styles','gpro_fix_ie6' );
 
 // Enqueue Scripts
-function add_scripts(){
-  if(!is_admin()){
+function gpro_add_scripts(){
+  if( ! is_admin() ){
     global $wp_query;
-    $stylesheet_dir = get_bloginfo('template_directory');
-    wp_enqueue_script('global', $stylesheet_dir . '/js/global.js', array('jquery'), false );
-    if($up_options->lazyload != "yes"):
-        wp_enqueue_script('lazyload', $stylesheet_dir . '/js/jquery.lazyload.pack.js', array('jquery'), false );
+    $stylesheet_dir = get_template_directory_uri();
+    wp_enqueue_script( 'global', $stylesheet_dir . '/js/global.js', array( 'jquery' ), false );
+    if( 'yes' != $up_options->lazyload ) :
+        wp_enqueue_script( 'lazyload', $stylesheet_dir . '/js/jquery.lazyload.pack.js', array( 'jquery' ), false );
     endif;
 
-    if(!is_singular() || !is_page()):
-        wp_enqueue_script('slideup', $stylesheet_dir . '/js/slideup.js', array('jquery'), false );
+    if( ! is_singular() || ! is_page() ) :
+        wp_enqueue_script( 'slideup', $stylesheet_dir . '/js/slideup.js', array( 'jquery' ), false );
     endif;
     
-    if(!is_home() || !is_page()):
-	wp_enqueue_script('gallery', $stylesheet_dir . '/js/gallery.js', array('jquery'), false );
-	wp_enqueue_script('thickbox', $stylesheet_dir . '/js/thickbox.js', array('jquery'), false );
+    if( ! is_home() || ! is_page() ) :
+		wp_enqueue_script( 'gallery', $stylesheet_dir . '/js/gallery.js', array( 'jquery' ), false );
+		wp_enqueue_script( 'thickbox', $stylesheet_dir . '/js/thickbox.js', array( 'jquery' ), false );
     endif;
   }
 }
-add_action('init','add_scripts');
+add_action( 'wp_enqueue_scripts','gpro_add_scripts' );
 
 // Enqueue Styles
-function add_styles(){
-  if(!is_admin()){
+function gpro_add_styles(){
+  if( ! is_admin() ) {
     global $up_options;
-    $stylesheet_dir = get_bloginfo('template_directory');
-    $style = (isset($_COOKIE['style'])) ? $_COOKIE['style'] : '';
-    if($style && $style=='dark' || $style=='light'):
-        $theme_color = $style;
-    elseif(isset($_REQUEST['style'])):
-            $theme_color = $_REQUEST['style'];
-    elseif($up_options->theme):
+    $stylesheet_dir = get_template_directory_uri();
+	$theme_color = 'dark';
+    $stylecookie = ( isset( $_COOKIE['style'] ) ) ? $_COOKIE['style'] : false;
+    $stylerequest = ( isset( $_REQUEST['style'] ) ) ? $_REQUEST['style'] : false;
+    if( $stylecookie && 'light' == $stylecookie ) :
+        $theme_color = $stylecookie;
+    elseif( $stylerequest && 'light' == $stylerequest ) :
+            $theme_color = $stylerequest;
+    elseif( $up_options->theme ) :
         $theme_color = $up_options->theme;
-    else:
-        $theme_color = 'dark';
     endif;
     $myStyleUrl =  $stylesheet_dir . "/style-" . $theme_color . ".css";
-    wp_enqueue_style('gallery', $myStyleUrl, array(), false, 'screen');
-    if(is_single()) wp_enqueue_style('thickbox_style',$stylesheet_dir . "/thickbox.css", array(), false, 'screen');
+    wp_enqueue_style( 'gallery', $myStyleUrl, array(), false, 'screen' );
+    if( is_singular() ) wp_enqueue_style( 'thickbox_style', $stylesheet_dir . "/thickbox.css", array(), false, 'screen' );
   }
 }
-add_action('wp_print_styles','add_styles');
+add_action( 'wp_enqueue_scripts','gpro_add_styles', 99 );
 
-function enable_lazyload(){
+function gpro_enable_lazyload(){
     global $up_options;
-    if($up_options->lazyload!="yes"):?>
+    if( 'yes' != $up_options->lazyload ) : ?>
     
     <script type="text/javascript">
 	$ = jQuery;
@@ -120,21 +124,23 @@ function enable_lazyload(){
     </script>
 <?php endif;
 }
-add_action('wp_head','enable_lazyload');
+add_action( 'wp_print_scripts','gpro_enable_lazyload' );
 
-function custom_css(){
-    global $up_options;
-    if($up_options->logo || $up_options->linkcolor || $up_options->hovercolor || $up_options->activecolor):
-        $custom_css = '<style type="text/css">';	
-        if($up_options->logo) $custom_css .= "#blog-title a{background: url('".get_bloginfo('template_directory')."/timthumb/timthumb.php?w=250&h=50&zc=1&src=".$up_options->logo."') no-repeat left top; width: 250px; height: 50px;}";
-        if($up_options->linkcolor) $custom_css .= "a{ color: ".$up_options->linkcolor.";}";
-        if($up_options->hovercolor) $custom_css .= "a:hover{ color: ".$up_options->hovercolor.";}";
-        if($up_options->activecolor) $custom_css .= "a:active{ color: ".$up_options->activecolor.";}";
-        $custom_css .= '</style>';
-        echo $custom_css;
-    endif;
+function gpro_custom_css(){
+	if ( ! is_admin() ) {
+		global $up_options;
+		if($up_options->logo || $up_options->linkcolor || $up_options->hovercolor || $up_options->activecolor):
+			$custom_css = '<style type="text/css">';	
+			if($up_options->logo) $custom_css .= "#blog-title a{background: url('".get_bloginfo('template_directory')."/timthumb/timthumb.php?w=250&h=50&zc=1&src=".$up_options->logo."') no-repeat left top; width: 250px; height: 50px;}";
+			if($up_options->linkcolor) $custom_css .= "a{ color: ".$up_options->linkcolor.";}";
+			if($up_options->hovercolor) $custom_css .= "a:hover{ color: ".$up_options->hovercolor.";}";
+			if($up_options->activecolor) $custom_css .= "a:active{ color: ".$up_options->activecolor.";}";
+			$custom_css .= '</style>';
+			echo $custom_css;
+		endif;
+	}
 }
-add_action('wp_head', 'custom_css');
+add_action( 'wp_print_styles', 'gpro_custom_css' );
 
 function pagemenu(){
     global $up_options;
@@ -183,7 +189,7 @@ function catmenu(){
     </div>	
 <?php }
 
-function add_home_link($menu){
+function gpro_add_home_link( $menu ) {
     global $up_options;
     $check = preg_match('/category/', $menu, $matches);
     if($matches && !$up_options->hide_home_link):
@@ -191,7 +197,7 @@ function add_home_link($menu){
     endif;
     return $menu;	
 }
-add_filter('wp_nav_menu_items','add_home_link');
+add_filter( 'wp_nav_menu_items','gpro_add_home_link' );
 
 // Located in header.php 
 // Creates the content of the Title tag
@@ -430,7 +436,7 @@ function gpro_show_commentreply() {
 function gpro_head_scripts() {
     $scriptdir_start = "\t";
     $scriptdir_start .= '<script type="text/javascript" src="';
-    $scriptdir_start .= get_bloginfo('template_directory');
+    $scriptdir_start .= get_template_directory_uri();
     $scriptdir_start .= '/library/scripts/';    
     $scriptdir_end = '"></script>';
     $scripts = "\n";
@@ -448,10 +454,10 @@ function gpro_head_scripts() {
     $scripts .= '</script>' . "\n";
 
     // Print filtered scripts
-    print apply_filters('gpro_head_scripts', $scripts);
+    print apply_filters( 'gpro_head_scripts', $scripts );
 
 }
-add_action('wp_head','gpro_head_scripts');
+add_action( 'wp_print_scripts','gpro_head_scripts' );
 
 // Just after the opening body tag, before anything else.
 function gpro_before() {
