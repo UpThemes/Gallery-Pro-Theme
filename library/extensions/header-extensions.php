@@ -18,7 +18,7 @@ function gpro_set_sidebar_styles(){
 
 		global $up_options;
 		
-		if((is_page() || is_search()) || ($up_options->showsidebar && (is_search() || is_page() || is_category() || is_archive || is_home() || is_front_page() || is_tag()))):?>
+		if((is_page() || is_search()) || ( $up_options->showsidebar && ( is_search() || is_page() || is_category() || is_archive || is_home() || is_front_page() || is_tag() ) ) ) : ?>
 			<style type="text/css">
 				#container,#content{ width: <?php echo 940-(int)$up_options->sidebarwidth."px"; ?>; margin: 0; padding: 0; }
 				#primary,#secondary{ width: <?php echo (int)$up_options->sidebarwidth."px"; ?>; margin: 0; padding: 0;}
@@ -30,7 +30,7 @@ function gpro_set_sidebar_styles(){
 		<?php endif;
 	}
 }
-add_action( 'wp_print_styles', 'gpro_set_sidebar_styles' );
+add_action( 'wp_print_scripts', 'gpro_set_sidebar_styles', 99 );
 
 // Add fix for ie6 styles
 function gpro_fix_ie6(){
@@ -104,7 +104,7 @@ function gpro_add_styles(){
     if( is_singular() ) wp_enqueue_style( 'thickbox_style', $stylesheet_dir . "/thickbox.css", array(), false, 'screen' );
   }
 }
-add_action( 'wp_enqueue_scripts','gpro_add_styles', 99 );
+add_action( 'wp_enqueue_scripts','gpro_add_styles', 10 );
 
 function gpro_enable_lazyload(){
     global $up_options;
