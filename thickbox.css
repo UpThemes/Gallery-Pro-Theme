@@ -52,7 +52,7 @@
 	background: #ffffff;
 	z-index: 102;
 	color:#000000;
-	display:none;
+	display: block;
 	border: 4px solid #525252;
 	text-align:left;
 	top:50%;
