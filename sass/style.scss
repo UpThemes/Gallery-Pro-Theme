@@ -1,0 +1,167 @@
+/*
+Theme Name: Gallery Pro
+Theme URI: http://upthemes.com/themes/gallery/
+Description: The next generation of the Gallery Pro theme.
+Author: Chris Wallace for <a href="http://upthemes.com">UpThemes</a>
+Author URI: http://upthemes.com
+Version: 2.0
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Norican|Playfair+Display+SC);
+
+$primaryFontFamily: "Source Sans Pro";
+$secondaryFontFamily: "Norican";
+$tertiaryFontFamily: "Playfair Display SC";
+$primaryColor: #aa1f25;
+$textColor: #222;
+$siteWidth: 1240px;
+
+@import "compass/reset";
+@import "compass/css3";
+@import "base";
+@import "icons";
+@import "header";
+@import "menu";
+@import "post";
+@import "comments";
+@import "sidebar";
+@import "footer";
+@import "flexslider";
+@import "viewjs";
+
+.screen-reader-text {
+  display: none;
+}
+
+.clear{
+  clear: both;
+}
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
+
+#content img{
+  max-width: 100%;
+  height: auto;
+}
+
+.category-title,
+.archive-title,
+.tag-title{
+  text-align: center;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  font-size: 1.6em;
+  border-bottom: 2px solid rgba(0,0,0,.07);
+}
+
+.home,
+.archive{
+  .no-results{
+    background-color: white;
+    @include border-radius(4px);
+    padding: 60px 20px 40px;
+    max-width: 680px;
+    margin: 0 auto 40px;
+    float: none;
+    text-align: center;
+
+    h1{
+      font-size: 1.5em;
+    }
+  }
+}
+
+#form-allowed-tags{
+  font-size: 11px;
+  line-height: 16px;
+  code {
+    font-size: 11px;
+    line-height: 21px;
+  }
+  span {
+    font-weight: bold;
+  }
+}
+
+#wrapper {
+  width: auto;
+  height: auto;
+  min-height: 100px;
+}
+
+#infscr-loading{
+  text-align: center;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 9999;
+  color: white;
+  background-color: rgba(0,0,0,0.8);
+  padding: 10px;
+  @include border-radius(4px);
+}
+
+.wp-caption{
+  padding: 0;
+  margin-bottom: 1em;
+}
+
+.alignleft{
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.alignright{
+  float: right;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.aligncenter{
+  margin: 0 auto;
+}
+
+#more a {
+  color: white;
+  background-color: $primaryColor;
+  display: block;
+  border: 2px solid white;
+  text-align: center;
+  padding: 15px 10px;
+  margin: 0 auto;
+  max-width: 320px;
+  font-weight: bold;
+  font-size: 1.4em;
+  text-transform: uppercase;
+  @include border-radius(6px);
+  @include text-shadow(0 -1px 0 darken($primaryColor,5%));
+
+  &:hover {
+    background-color: darken($primaryColor,5%);
+    @include text-shadow(0 -1px 0 darken($primaryColor,15%));
+  }
+
+  &:active {
+    background-color: $primaryColor;
+    padding-top: 11px;
+    padding-bottom: 9px;
+    @include text-shadow(0 -1px 0 rgba(0, 0, 0, 0.2));
+  }
+}

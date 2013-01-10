@@ -1,1 +1,0 @@
-<?php // this file is deprecated. thanks for visiting though. Please see the functions.php file and the /library/ folder?>

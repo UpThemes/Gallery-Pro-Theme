@@ -1,410 +1,544 @@
 <?php
-// Getting Theme and Child Theme Data
-// Credits: Joern Kretzschmar
+/**
+ * Gallery Pro functions and definitions.
+ *
+ * Sets up the theme and provides some helper functions, which are used
+ * in the theme as custom template tags. Others are attached to action and
+ * filter hooks in WordPress to change core functionality.
+ *
+ * When using a child theme (see http://codex.wordpress.org/Theme_Development and
+ * http://codex.wordpress.org/Child_Themes), you can override certain functions
+ * (those wrapped in a function_exists() call) by defining them first in your child theme's
+ * functions.php file. The child theme's functions.php file is included before the parent
+ * theme's file, so the child theme functions would be used.
+ *
+ * Functions that are not pluggable (not wrapped in function_exists()) are instead attached
+ * to a filter or action hook.
+ *
+ * For more information on hooks, actions, and filters, see http://codex.wordpress.org/Plugin_API.
+ *
+ * @package WordPress
+ * @subpackage Gallery Pro
+ * @since Gallery Pro 1.0
+ */
 
-$themeData = get_theme_data(TEMPLATEPATH . '/style.css');
-$version = trim($themeData['Version']);
-if(!$version) $version = "unknown";
+/**
+ * Sets up the content width value based on the theme's design and stylesheet.
+ */
+if ( ! isset( $content_width ) )
+	$content_width = 700;
 
-// set theme constants
-define('THEMENAME', $themeData['Title']);
-define('THEMEAUTHOR', $themeData['Author']);
-define('THEMEURI', $themeData['URI']);
-define('THEMATICVERSION', $version);
+/**
+ * Sets up theme defaults and registers the various WordPress features that
+ * Gallery Pro supports.
+ *
+ * @uses load_theme_textdomain() For translation/localization support.
+ * @uses add_editor_style() To add a Visual Editor stylesheet.
+ * @uses add_theme_support() To add support for post thumbnails, automatic feed links,
+ * 	custom background, and post formats.
+ * @uses register_nav_menu() To add support for navigation menus.
+ * @uses set_post_thumbnail_size() To set a custom post thumbnail size.
+ *
+ * @since Gallery Pro 1.0
+ */
+function gallery_setup() {
+	/*
+	 * Makes Gallery Pro available for translation.
+	 *
+	 * Translations can be added to the /languages/ directory.
+	 * If you're building a theme based on Gallery Pro, use a find and replace
+	 * to change 'gallery' to the name of your theme in all the template files.
+	 */
+	load_theme_textdomain( 'gallery', get_template_directory() . '/languages' );
 
-// load jQuery
-if(!is_admin())wp_enqueue_script('jquery');
+	// This theme styles the visual editor with editor-style.css to match the theme style.
+	add_editor_style();
 
-// Path constants
-define('THEMELIB', TEMPLATEPATH . '/library');
+	// Adds RSS feed links to <head> for posts and comments.
+	add_theme_support( 'automatic-feed-links' );
 
-//Load PageNavi
-if(!function_exists('wp_pagenavi')){
-    include(TEMPLATEPATH. '/wp-pagenavi/wp-pagenavi.php');
+	// This theme supports a variety of post formats.
+	add_theme_support( 'post-formats', array( 'aside', 'video', 'image', 'link', 'quote', 'status', 'gallery' ) );
+
+	// This theme uses wp_nav_menu() in one location.
+	register_nav_menu( 'primary_nav', __( 'Primary Menu', 'gallery' ) );
+	register_nav_menu( 'footer_nav', __( 'Footer Menu', 'gallery' ) );
+
+  add_image_size('full-width',660,99999,false);
+  add_image_size('full-width-2x',1320,99999,false);
+  add_image_size('grid',232,9999,false);
+  add_image_size('grid-2x',464,9999,false);
+
+	/*
+	 * This theme supports custom background color and image, and here
+	 * we also set up the default background color.
+	 */
+	add_theme_support( 'custom-background', array(
+		'default-color' => 'f2f2f2f2',
+	) );
+
+	// This theme uses a custom image size for featured images, displayed on "standard" posts.
+	add_theme_support( 'post-thumbnails' );
+	set_post_thumbnail_size( 624, 9999 ); // Unlimited height, soft crop
+}
+add_action( 'after_setup_theme', 'gallery_setup' );
+
+/**
+ * Adds support for a custom header image.
+ */
+include_once( get_template_directory() . '/library/custom-header.php' );
+
+/**
+ * Adds support for custom gallery sliders
+ */
+include_once( get_template_directory() . '/library/gallery-slider.php' );
+
+/**
+ * Enqueues scripts and styles for front-end.
+ *
+ * @since Gallery Pro 1.0
+ */
+function gallery_scripts_styles() {
+
+	/*
+	 * Adds JavaScript to pages with the comment form to support
+	 * sites with threaded comments (when in use).
+	 */
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
+		wp_enqueue_script( 'comment-reply' );
+
+	wp_enqueue_script( 'evo-navigation', get_template_directory_uri() . '/js/navigation.js', false );
+  wp_enqueue_script( 'evo-hoverIntent', get_template_directory_uri() . '/js/hoverIntent.js', false );
+  wp_enqueue_script( 'evo-retina', get_template_directory_uri() . '/js/jquery.retina.js', false );
+  wp_enqueue_script( 'evo-infinitescroll', get_template_directory_uri() . '/js/jquery.infinitescroll.js', array('jquery') );
+  wp_enqueue_script( 'evo-fitvids', get_template_directory_uri() . '/js/jquery.fitvids.js', array('jquery') );
+  wp_enqueue_script( 'evo-masonry', get_template_directory_uri() . '/js/jquery.masonry.js', array('evo-infinitescroll') );
+  wp_enqueue_script( 'evo-scrollTo', get_template_directory_uri() . '/js/jquery.scrollTo.js', array('evo-masonry') );
+  wp_enqueue_script( 'evo-fitVids', get_template_directory_uri() . '/js/fitVids.js', false );
+  wp_enqueue_script( 'evo-view', get_template_directory_uri() . '/js/view.js', false );
+  wp_enqueue_script( 'evo-flexslider', get_template_directory_uri() . '/js/jquery.flexslider.js', array('jquery') );
+  wp_enqueue_script( 'evo-superfish', get_template_directory_uri() . '/js/superfish.js' );
+  wp_enqueue_script( 'evo-supersubs', get_template_directory_uri() . '/js/supersubs.js', array('evo-superfish') );
+  wp_enqueue_script( 'evo-global', get_template_directory_uri() . '/js/global.js', array('evo-flexslider','evo-fitvids','evo-infinitescroll','evo-retina','evo-scrollTo','evo-supersubs','evo-navigation') );
+
+	/*
+	 * Loads our main stylesheet.
+	 */
+	wp_enqueue_style( 'evo-style', get_stylesheet_uri() );
+}
+add_action( 'wp_enqueue_scripts', 'gallery_scripts_styles' );
+
+function gallery_set_loading_gif_location(){
+	$template_directory = get_template_directory_uri();
+	echo "<script>"."\n";
+	echo "var global = {"."\n";
+	echo "	loading : '$template_directory/images/loading.gif'"."\n";
+	echo "}"."\n";
+	echo "</script>"."\n\n";
 }
 
-// Load widgets
-require_once(THEMELIB . '/extensions/widgets.php');
+add_action("wp_head","gallery_set_loading_gif_location",0);
 
-// Load custom header extensions
-require_once(THEMELIB . '/extensions/header-extensions.php');
+function gallery_post_thumbnail( $size ){
 
-// Load custom content filters
-require_once(THEMELIB . '/extensions/content-extensions.php');
+  global $post;
 
-// Load custom Comments filters
-require_once(THEMELIB . '/extensions/comments-extensions.php');
+  if( isset($post->ID) && has_post_thumbnail($post->ID) ){
 
-// Load custom Widgets
-require_once(THEMELIB . '/extensions/widgets-extensions.php');
+	  if( $size == 'grid' ):
+	    $normal_size = 'grid';
+	    $retina_size = 'grid-2x';
+	  elseif( $size == 'full-width' ):
+	    $normal_size = 'full-width';
+	    $retina_size = 'full-width-2x';
+	  else:
+	    $normal_size = 'medium';
+	    $retina_size = 'large';
+	  endif;
 
-// Load the Comments Template functions and callbacks
-require_once(THEMELIB . '/extensions/discussion.php');
+	  $post_thumbnail_id = get_post_thumbnail_id($post->ID);
 
-// Load custom sidebar hooks
-require_once(THEMELIB . '/extensions/sidebar-extensions.php');
+	  $normal_image = wp_get_attachment_image_src( $post_thumbnail_id, $normal_size);
+	  $normal_image_src = $normal_image[0];
+	  $normal_width = $normal_image[1];
+	  $normal_height = $normal_image[2];
+	  $retina_image = wp_get_attachment_image_src( $post_thumbnail_id, $retina_size);
+	  $retina_image_src = $retina_image[0];
+	  $retina_width =  $retina_image[1] ? $retina_image[1] : '200';
+	  $retina_height = $retina_image[2] ? $retina_image[2] : '200';
 
-// Load custom footer hooks
-require_once(THEMELIB . '/extensions/footer-extensions.php');
+	  if( $retina_image_src ){
+	 		$retina_image = " data-retina=\"$retina_image_src\"";
+	  }
 
-// Need a little help from our helper functions
-require_once(THEMELIB . '/extensions/helpers.php');
+	  if( get_post_meta($post_thumbnail_id, '_wp_attachment_image_alt', true) )
+	    $alt_text = ' alt="' . get_post_meta($post_thumbnail_id, '_wp_attachment_image_alt', true) . '"';
+	  else
+	    $alt_text = '';
 
-// Load shortcodes
-require_once(THEMELIB . '/extensions/shortcodes.php');
+	  echo "<img class=\"wp-post-image\" width=\"$normal_width\" height=\"$normal_height\" src=\"$normal_image_src\"$retina_image$alt_text>";
+	} else {
+		echo false;
+	}
 
-// Get The Image Plugin by Justin Tadlock
-require_once(THEMELIB . '/extensions/get-the-image.php');
+}
 
-// Get 
-require_once(THEMELIB . '/extensions/gallery-metaboxes.php');
+/**
+ * Creates a nicely formatted and more specific title element text
+ * for output in head of document, based on current view.
+ *
+ * @since Gallery Pro 1.0
+ *
+ * @param string $title Default title text for current view.
+ * @param string $sep Optional separator.
+ * @return string Filtered title.
+ */
+function gallery_wp_title( $title, $sep ) {
+	global $paged, $page;
 
-// Adds filters for the description/meta content in archives.php
-add_filter( 'archive_meta', 'wptexturize' );
-add_filter( 'archive_meta', 'convert_smilies' );
-add_filter( 'archive_meta', 'convert_chars' );
-add_filter( 'archive_meta', 'wpautop' );
+	if ( is_feed() )
+		return $title;
 
-// Remove the WordPress Generator – via http://blog.ftwr.co.uk/archives/2007/10/06/improving-the-wordpress-generator/
-function gpro_remove_generators() { return ''; }  
-add_filter('the_generator','gpro_remove_generators');
+	// Add the site name.
+	$title .= get_bloginfo( 'name' );
 
-// Translate, if applicable
-load_theme_textdomain('gpro', THEMELIB . '/languages');
-$locale = get_locale();
-$locale_file = THEMELIB . "/languages/$locale.php";
-if (is_readable($locale_file)) require_once($locale_file);
+	// Add the site description for the home/front page.
+	$site_description = get_bloginfo( 'description', 'display' );
+	if ( $site_description && ( is_home() || is_front_page() ) )
+		$title = "$title $sep $site_description";
 
-//Add Theme Support
-add_theme_support('automatic-feed-links');
+	// Add a page number if necessary.
+	if ( $paged >= 2 || $page >= 2 )
+		$title = "$title $sep " . sprintf( __( 'Page %s', 'gallery' ), max( $paged, $page ) );
 
-// UpThemes Admin Functions
-require_once('admin/admin.php');
+	return $title;
+}
+add_filter( 'wp_title', 'gallery_wp_title', 10, 2 );
 
-function gpro_theme_init(){
-    global $up_options; 
-    if ( function_exists( 'add_theme_support' ) ):
-        add_theme_support( 'post-thumbnails' );
-        set_post_thumbnail_size( 125, 125, true ); 
-        add_image_size( 'single', 500, 375, true );
-        add_image_size( 'thumb_large', 300, 225, true );
-        add_image_size( 'thumb_medium', 226, 180, true );
-        add_image_size( 'thumb_small', 125, 125, true );
-        add_image_size( 'full', 700, 9999 );
+/**
+ * Makes our wp_nav_menu() fallback -- wp_page_menu() -- show a home link.
+ *
+ * @since Gallery Pro 1.0
+ */
+function gallery_page_menu_args( $args ) {
+	if ( ! isset( $args['show_home'] ) )
+		$args['show_home'] = true;
+	return $args;
+}
+add_filter( 'wp_page_menu_args', 'gallery_page_menu_args' );
+
+/**
+ * Registers our main widget area and the front page widget areas.
+ *
+ * @since Gallery Pro 1.0
+ */
+function gallery_widgets_init() {
+	register_sidebar( array(
+		'name' => __( 'Main Sidebar', 'gallery' ),
+		'id' => 'sidebar-primary',
+		'description' => __( 'Appears on posts and pages.', 'gallery' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+	register_sidebar( array(
+		'name' => __( 'Footer', 'gallery' ),
+		'id' => 'sidebar-footer',
+		'description' => __( 'Appears on footer.', 'gallery' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="inner">',
+		'after_widget' => '</div></aside>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+}
+add_action( 'widgets_init', 'gallery_widgets_init' );
+
+if ( ! function_exists( 'gallery_content_nav' ) ) :
+/**
+ * Displays navigation to next/previous pages when applicable.
+ *
+ * @since Gallery Pro 1.0
+ */
+function gallery_content_nav( $nav_id ) {
+	global $wp_query;
+
+	if ( $wp_query->max_num_pages > 1 ) : ?>
+		<nav id="<?php echo $nav_id; ?>" class="navigation" role="navigation">
+			<h3 class="assistive-text"><?php _e( 'Post navigation', 'gallery' ); ?></h3>
+			<div class="nav-previous alignleft"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'gallery' ) ); ?></div>
+			<div class="nav-next alignright"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'gallery' ) ); ?></div>
+		</nav><!-- #<?php echo $nav_id; ?> .navigation -->
+	<?php endif;
+}
+endif;
+
+if ( ! function_exists( 'gallery_comment' ) ) :
+/**
+ * Template for comments and pingbacks.
+ *
+ * To override this walker in a child theme without modifying the comments template
+ * simply create your own gallery_comment(), and that function will be used instead.
+ *
+ * Used as a callback by wp_list_comments() for displaying the comments.
+ *
+ * @since Gallery Pro 1.0
+ */
+function gallery_comment( $comment, $args, $depth ) {
+	$GLOBALS['comment'] = $comment;
+	switch ( $comment->comment_type ) :
+		case 'pingback' :
+		case 'trackback' :
+	?>
+	<li class="post pingback">
+		<p><?php _e( 'Pingback:', 'gallery' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'gallery' ), '<span class="edit-link">', '</span>' ); ?></p>
+	<?php
+			break;
+		default :
+	?>
+	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+		<article id="comment-<?php comment_ID(); ?>" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<?php
+						$avatar_size = 68;
+						if ( '0' != $comment->comment_parent )
+							$avatar_size = 39;
+
+						echo get_avatar( $comment, $avatar_size );
+
+						/* translators: 1: comment author, 2: date and time */
+						printf( __( '%1$s <span class="says">said:</span>', 'gallery' ),
+							sprintf( '<span class="fn">%s</span>', get_comment_author_link() )
+						);
+					?>
+
+				</div><!-- .comment-author .vcard -->
+
+				<?php if ( $comment->comment_approved == '0' ) : ?>
+					<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'gallery' ); ?></em>
+					<br />
+				<?php endif; ?>
+
+			</footer>
+
+			<div class="comment-content"><?php comment_text(); ?></div>
+
+			<div class="reply">
+				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply <span>&darr;</span>', 'gallery' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<?php
+			break;
+	endswitch;
+}
+endif; // ends check for gallery_comment()
+
+/**
+ * Modifies the text fields for the comment form.
+ *
+ * @since Gallery Pro 2.0
+ */
+function upthemes_form_fields($fields) {
+	global $commenter,$aria_req;
+  $fields = array(
+  	'author' => '<p class="comment-form-author"><span class="text-field-holder"><input id="author" name="author" placeholder="Name" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '"' . $aria_req . ' /></span></p>',
+  	'email'  => '<p class="comment-form-email"><span class="text-field-holder"><input id="email" name="email" placeholder="Email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '"' . $aria_req . ' /></span></p>',
+  	'url'    => '<p class="comment-form-url"><span class="text-field-holder"><input id="url" name="url" placeholder="Web URL" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" /></span></p>'
+  );
+
+  return $fields;
+}
+
+add_filter('comment_form_default_fields','upthemes_form_fields');
+
+if ( ! function_exists( 'gallery_entry_meta' ) ) :
+/**
+ * Prints HTML with meta information for current post: categories, tags, permalink, author, and date.
+ *
+ * Create your own gallery_entry_meta() to override in a child theme.
+ *
+ * @since Gallery Pro 1.0
+ */
+function gallery_entry_meta() {
+	// Translators: used between list items, there is a space after the comma.
+	$categories_list = get_the_category_list( __( ', ', 'gallery' ) );
+
+	// Translators: used between list items, there is a space after the comma.
+	$tag_list = get_the_tag_list( '', __( ', ', 'gallery' ) );
+
+	$date = sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a>',
+		esc_url( get_permalink() ),
+		esc_attr( get_the_time() ),
+		esc_attr( get_the_date( 'c' ) ),
+		esc_html( get_the_date() )
+	);
+
+	$author = sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
+		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+		esc_attr( sprintf( __( 'View all posts by %s', 'gallery' ), get_the_author() ) ),
+		get_the_author()
+	);
+
+	// Translators: 1 is category, 2 is tag, 3 is the date and 4 is the author's name.
+	if ( $tag_list ) {
+		$utility_text = __( 'This entry was posted in %1$s and tagged %2$s on %3$s<span class="by-author"> by %4$s</span>.', 'gallery' );
+	} elseif ( $categories_list ) {
+		$utility_text = __( 'This entry was posted in %1$s on %3$s<span class="by-author"> by %4$s</span>.', 'gallery' );
+	} else {
+		$utility_text = __( 'This entry was posted on %3$s<span class="by-author"> by %4$s</span>.', 'gallery' );
+	}
+
+	printf(
+		$utility_text,
+		$categories_list,
+		$tag_list,
+		$date,
+		$author
+	);
+}
+endif;
+
+/**
+ * Extends the default WordPress body class to denote:
+ * 1. Using a full-width layout, when no active widgets in the sidebar
+ *    or full-width template.
+ * 2. Front Page template: thumbnail in use and number of sidebars for
+ *    widget areas.
+ * 3. White or empty background color to change the layout and spacing.
+ * 4. Custom fonts enabled.
+ * 5. Single or multiple authors.
+ *
+ * @since Gallery Pro 1.0
+ *
+ * @param array Existing class values.
+ * @return array Filtered class values.
+ */
+function gallery_body_class( $classes ) {
+	$background_color = get_background_color();
+
+	if ( ! is_active_sidebar( 'sidebar-1' ) || is_page_template( 'page-templates/full-width.php' ) )
+		$classes[] = 'full-width';
+
+	if ( is_page_template( 'page-templates/front-page.php' ) ) {
+		$classes[] = 'template-front-page';
+		if ( has_post_thumbnail() )
+			$classes[] = 'has-post-thumbnail';
+		if ( is_active_sidebar( 'sidebar-2' ) && is_active_sidebar( 'sidebar-3' ) )
+			$classes[] = 'two-sidebars';
+	}
+
+	if ( empty( $background_color ) )
+		$classes[] = 'custom-background-empty';
+	elseif ( in_array( $background_color, array( 'fff', 'ffffff' ) ) )
+		$classes[] = 'custom-background-white';
+
+	// Enable custom font class only if the font CSS is queued to load.
+	if ( wp_style_is( 'evo-fonts', 'queue' ) )
+		$classes[] = 'custom-font-enabled';
+
+	if ( ! is_multi_author() )
+		$classes[] = 'single-author';
+
+	return $classes;
+}
+add_filter( 'body_class', 'gallery_body_class' );
+
+/**
+ * Add postMessage support for site title and description for the Theme Customizer.
+ *
+ * @since Gallery Pro 1.0
+ *
+ * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+ * @return void
+ */
+function gallery_customize_register( $wp_customize ) {
+	$wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
+	$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
+}
+add_action( 'customize_register', 'gallery_customize_register' );
+
+/**
+ * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
+ *
+ * @since Gallery Pro 1.0
+ */
+function gallery_customize_preview_js() {
+	wp_enqueue_script( 'evo-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20120827', true );
+}
+add_action( 'customize_preview_init', 'gallery_customize_preview_js' );
+
+
+/**
+ * Displays heading text with post count
+ *
+ * @since Gallery Pro 1.0
+ */
+function gallery_list_header(){
+	
+	global $wpdb,$wp_query;
+	
+	if(is_category()):
+		$catID = get_query_var('cat');
+		$post_count = (int) get_category($catID)->count;
+	elseif(is_tag()):
+		$tagID = get_query_var('tag');
+		$post_count = (int) get_category($tagID)->count;
+	elseif(is_home() || is_front_page()):
+		$post_count = $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->posts WHERE post_status = 'publish' AND post_type ='post'");
+		if (0 < $post_count)
+			$post_count = (int)$post_count; 
+	endif;
+
+	$page = get_query_var('paged');
+	$posts_per_page = get_option('posts_per_page');
+						
+	if($page == 0):
+		$starting_post = 1;
+		$ending_post = (int)$posts_per_page;
+	else:
+		$starting_post = (int)(($page-1) * $posts_per_page);
+		$ending_post = (int)((($page-1) * $posts_per_page) + $posts_per_page);
+	endif;
+
+	if($ending_post > $post_count)
+		$ending_post = $post_count;
+	
+	?>
+
+  <h2>
+    <?php
+    if(is_category()):
+      echo single_cat_title() . " ";               
+    elseif(is_tag()):
+      echo single_tag_title() . " ";               
     endif;
-    add_theme_support( 'nav-menus' );
-    if(function_exists('register_nav_menu')):
-        register_nav_menu( 'primary_menu' , 'Primary Menu' );
-        register_nav_menu( 'secondary_menu' , 'Secondary Menu' );
-    endif;
-}
-add_action('after_setup_theme','gpro_theme_init');
-
-// Fix Thickbox image paths
-function thickbox_image_paths() {
-    global $post;
-    wp_reset_query();
-    if (is_singular()) :
-        $thickbox_path = get_option('siteurl') . '/wp-includes/js/thickbox/';
-        echo "<script type=\"text/javascript\">\n";
-        echo "	var tb_pathToImage = \"${thickbox_path}loadingAnimation.gif\";\n";
-        echo "	var tb_closeImage = \"${thickbox_path}tb-close.png\";\n";
-        echo "</script>\n";
-    endif;
-}
-add_action('wp_footer', 'thickbox_image_paths');
-
-// Function to get width of thumbnails
-function get_thumbnail_width($px=false){
-    
-    global $up_options;
-    if($up_options->thumbnail_w):
-        $thumbnail_width = (int)$up_options->thumbnail_w;
-    else:
-        $thumbnail_width = '125';
-    endif;
-  
-    if($px==true):
-        return $thumbnail_width . 'px';
-    else:
-        return $thumbnail_width;
-    endif;
+    ?>
+    <span class="pagination">
+    <?php
+    $pagination = __('Showing %1$s - %2$s of %3$s','gallery');
+    printf($pagination, $starting_post, $ending_post, $post_count); ?>
+    </span>
+  </h2>
+<?php
 }
 
-// Function to get height of thumbnails
-function get_thumbnail_height($px=false){
-    global $up_options;
-    if(isset($up_options->thumbnail_h)):
-        $thumbnail_height = (int)$up_options->thumbnail_h;
-    else:
-        $thumbnail_height = '125';
-    endif;
-    if($px==true):
-        return $thumbnail_height . 'px';
-    else:
-        return $thumbnail_height;
-    endif;
+/**
+ *  Post navigation functionality
+ *
+ * @since Gallery Pro 1.0
+ */
+function gallery_navigation_below() {
+  if ( is_single() ): ?>
+	<div id="nav-below" class="navigation">
+		<div class="nav-previous"><?php gallery_previous_post_link() ?></div>
+		<div class="nav-next"><?php gallery_next_post_link() ?></div>
+	</div>
+<?php else: ?>
+  <div id="more">
+	  <?php next_posts_link( __('Load More', 'gallery') ) ?>
+  </div>
+<?php
+  endif;
 }
-
-function set_thumbnail_h_w(){
-    global $up_options;	
-    if(isset($_POST['up_save'])):
-        if($up_options->thumbnail_h):
-            update_option("thumbnail_size_h",$up_options->thumbnail_h);
-        endif;
-        if($up_options->thumbnail_w):
-            update_option("thumbnail_size_w",$up_options->thumbnail_w);
-        endif;	
-    endif;
-}
-add_action('init','set_thumbnail_h_w');
-
-//  Gallery Child Theme Functions
-function childtheme_menu_args($args) {
-    $args = array(
-        'show_home' => 'Home',
-        'sort_column' => 'menu_order',
-        'menu_class' => 'menu',
-        'echo' => true
-    );
-    return $args;
-}
-add_filter('wp_page_menu_args', 'childtheme_menu_args');
-
-// 
-function theme_footer($themelink) {
-    global $up_options;
-    return $up_options->footertext;
-}
-add_filter('gpro_footertext', 'theme_footer');
-
-// Remove sidebar on gallery-style pages
-function remove_sidebar() {
-    global $post, $up_options;
-    if(!is_single()){
-        if(!isset($up_options->enablesidebar)){
-            return TRUE;
-        } else {
-            return FALSE;
-        }
-    } elseif(get_post_meta($post->ID,"custom_post_template",true) == "blog.php"){
-        return TRUE;
-    }
-}
-add_filter('gpro_sidebar', 'remove_sidebar');
-
-//get thumbnail
-function postimage($size=medium) {
-    global $post;
-    global $up_options;
-    
-    if ( $images = get_children(array(
-            'post_parent' => get_the_ID(),
-            'post_type' => 'attachment',
-            'numberposts' => 1,
-            'order' => 'ASC',
-            'post_mime_type' => 'image',))){
-        foreach( $images as $image ) {
-            $attachmentimage_thumb_src=wp_get_attachment_image_src( $image->ID, 'thumbnail' );
-            $attachmentimage_medium=wp_get_attachment_image( $image->ID, 'medium' );
-            $attachmentimage_src=wp_get_attachment_image_src( $image->ID, $size );
-            if($up_options->timthumb == 'yes'){
-                    echo '<img src="' . $attachmentimage_thumb_src[0] . '" ' . $attributes . ' class="thumbnail" alt="' . attribute_escape($post->post_title) . '" />';
-            } else {
-                echo '<img src="' . get_bloginfo('template_directory') . '/timthumb/timthumb.php?src=' . $attachmentimage_src[0] . '&w=' . get_thumbnail_width() . '&h=' . get_thumbnail_height() . ' &zc=1" ' . $attributes . ' class="thumbnail" alt="' . attribute_escape($post->post_title) . '" />';
-            }
-        }
-    } 
-}
-
-//get images
-function postimages($size = 'single') {
-    
-    global $up_options;
-            /* Insert Image from Custom Field Full-Width Option */
-            global $featured_slider_image;
-            if($featured_slider_image) echo '<div class="jFlowSlideContainer"><a class="thickbox" rel="' . get_the_ID() . '" href="' . $featured_slider_image['large'] . '">' . $featured_slider_image['single'] . '</a></div>';
-            
-            /* Insert Image from Custom Field Full-Width Option */
-            global $custom_field_slider_image;
-            if($custom_field_slider_image):
-                echo '<div class="jFlowSlideContainer"><a class="thickbox" rel="' . get_the_ID() . '" href="' . $custom_field_slider_image . '"><img src="' . $custom_field_slider_image . '" height="375" width="500" alt="'.get_the_title().'" /></a></div>';
-                $has_image = true;
-            endif;
-            
-            if ($images = get_children(array('post_parent' => get_the_ID(), 'post_type' => 'attachment', 'order' => 'ASC', 'post_mime_type' => 'image',))){
-                /* Insert Images from Attachments */
-                foreach( $images as $image ) {
-                    $attachmentimage_medium = wp_get_attachment_image( $image->ID, 'single' ); 
-                    $attachmentimage_src = wp_get_attachment_image_src( $image->ID, $size );
-                    $attachmentimage_large_src = wp_get_attachment_image_src( $image->ID, 'large' );
-                    if($attachmentimage_medium != $featured_slider_image['single']):
-                        echo '<div class="jFlowSlideContainer"><a class="thickbox" rel="' . get_the_ID() . '" href="' . $attachmentimage_large_src[0] . '">' . $attachmentimage_medium . '</a></div>';
-                    endif;
-                }
-                $has_image = true;
-            }
-            
-            /* Insert Images from the Content Area */
-            global $content_slider_images;
-            if(is_array($content_slider_images)):
-                foreach($content_slider_images as $image):
-                    echo '<div class="jFlowSlideContainer"><a class="thickbox" rel="' . get_the_ID() . '" href="' . $image . '"><img src="' . $image . '" height="375" width="500" alt="'.get_the_title().'" /></a></div>';
-                endforeach;
-                $has_image = true;
-            endif;
-            
-            /* Default Image */
-            if(empty($has_image)):
-                echo '<img src="' . get_bloginfo('template_directory') . '/images/default_single.jpg" alt=""/>';
-            endif;
-	 
-}
-
-//check any attachment 
-function checkimage($size=medium) {
-    if ( $images = get_children(array(
-        'post_parent' => get_the_ID(),
-        'post_type' => 'attachment',
-        'numberposts' => 1,
-        'post_mime_type' => 'image',)))
-    {
-        foreach( $images as $image ) {
-            $attachmentimage=wp_get_attachment_image( $image->ID, $size );
-            return $attachmentimage;
-        }
-    } 
-}
-
-// Remove Navigation Above & Below
-function remove_navigation() {
-    remove_action('gpro_navigation_above', 'gpro_nav_above', 2);
-    remove_action('gpro_navigation_below', 'gpro_nav_below', 2);
-}
-add_action('init', 'remove_navigation');
-
-// re-create gpro_nav_below
-function gallery_nav_below() {
-    if (!(is_single())) { ?>
-        <div id="nav-below" class="navigation">
-            <?php if(function_exists('wp_pagenavi')) { ?>
-                <?php wp_pagenavi(); ?>
-            <?php } else { ?>  
-                <div class="nav-previous"><?php next_posts_link(__('<span class="meta-nav">&laquo;</span> Older posts', 'gpro')) ?></div>
-                <div class="nav-next"><?php previous_posts_link(__('Newer posts <span class="meta-nav">&raquo;</span>', 'gpro')) ?></div>
-	    <?php } ?>
-	</div>	
-    <?php }
-}
-add_action('gpro_navigation_below', 'gallery_nav_below');
-
-// Filter the Page Title
-function gallery_page_title ($content) {
-  if (is_category()) {
-    $content = '<h1 class="page-title"><span>';
-    $content .= single_cat_title("", false);
-    $content .= '</span></h1>';
-    if ( !(''== category_description()) ) {
-	$content .= '<div class="archive-meta">';
-	$content .= apply_filters('archive_meta', category_description());
-	$content .= '</div>';
-    }
-  } elseif (is_tag()) {
-    $content = '<h1 class="page-title"><span>';
-    $content = gpro_tag_query();
-    $content = '</span></h1>';
-  }
-  return $content;
-}
-add_filter('gpro_page_title', 'gallery_page_title');
-// End of Filter the Page Title
-
-// Custom post header
-function childtheme_post_header(){
-    global $up_options;
-    if($up_options->new):
-        $time = $up_options->new;
-    else:
-        $time = 3;
-    endif;
-    if ( (time()-get_the_time('U')) <= ($time*86400) ) : // The number 3 is how many days to keep posts marked as new
-        echo '<div class="new"></div>';
-    endif;
-}
-
-function single_postmedia_handler(){
-    global $up_options; 
-    if(function_exists('p75HasVideo')):
-        if(p75HasVideo(get_the_ID())):
-            echo p75GetVideo(get_the_ID());
-            $p75 = true;
-        endif;
-    endif;
-    
-    if(empty($p75)){?>
-        <div id="featured-wrapper">
-            <div id="featured">
-                <div id="mySlides">
-                    <?php postimages('single'); ?>
-                </div><!--/#mySlides-->
-                <div id="myController"></div><!--/#myController-->
-            </div><!--/#featured-wrapper-->
-        </div><!--/#products-->
-    <?php }
-
-}
-add_action('single_postmedia','single_postmedia_handler');
-
-function rssfeed(){ ?>
-    <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> &raquo; <?php _e('Feed','gpro'); ?>" href="<?php upfw_rss(); ?>" />
-<?php }
-add_action( 'wp_head','rssfeed', 1 );
-
-function gpro_images_from_content(){
-    $search_pattern = '~<img [^>]* />~';
-    /* Place all images into an array */
-    preg_match_all($search_pattern, get_the_content(), $images );
-    $images_num = count($images[0]);
-    $output = array();
-    $images = $images[0];
-    if ( $images_num > 0 ) { 
-        foreach($images as $image):
-            /* Find the image src attr value */
-            $search_pattern = '/<\s*img [^\>]*src\s*=\s*[\""\']?([^\""\'\s>]*)/i';
-            preg_match_all($search_pattern, $image, $src);
-            /* Add image URL to array */
-            $output[] = $src[1][0];
-        endforeach;
-        /* Make Image Array Available to postimages() function */
-        GLOBAL $content_slider_images;
-        $content_slider_images = $output;
-    };
-}
-
-function gpro_image_from_custom_field(){
-    $image = get_post_meta(get_the_ID(), 'full-image', true);
-    if($image):
-        GLOBAL $custom_field_slider_image;
-        $custom_field_slider_image = $image;
-    endif;
-}
-
-function gpro_featured_image(){
-    if(has_post_thumbnail()): 
-        GLOBAL $featured_slider_image;
-        $featured_slider_image['single'] = wp_get_attachment_image( get_post_thumbnail_id(get_the_ID()), 'single' );
-        $large = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), 'large' );
-        $featured_slider_image['large'] = $large[0];
-    endif;
-}
-
-
-function gpro_strip_images_from_content(){
-    $search_pattern = '~<img [^>]* />~';
-    /* Strip Images out of Content */
-    $content = preg_replace($search_pattern, '', get_the_content());
-    /* Add Paragraph Tags to New Lines */
-    return wpautop($content);
-}
-
-?>

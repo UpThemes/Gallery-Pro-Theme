@@ -1,0 +1,103 @@
+.widget-area {
+  margin: 0;
+
+  .widget{
+    background-color: #fff;
+    font-size: 0.9em;
+
+    h3{
+      font-size: 1em;
+      font-weight: bold;
+      margin-bottom: 1em;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-bottom: 1px solid #eee;
+
+
+      &.recentcomments{
+        padding: 3px 0;
+      }
+
+      &:first-child {
+        border-top: 1px solid #eee;
+      }
+
+      a {
+        padding: 3px 0;
+        display: inline-block;
+        @include transition(100ms all ease-in-out);
+
+        &:hover {
+          background-color: #f2f2f2;
+          padding-left: 8px;
+          padding-right: 8px;
+        }
+      }
+    }
+
+  }
+}
+
+.single,
+.page{
+    #primary {
+    float: left;
+    width: 28%;
+
+    .widget {
+      padding: 20px;
+      background: #fff;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+#wp-calendar{
+  width: 100%;
+
+  caption,
+  th,
+  td{
+    text-align: center;
+  }
+
+  caption,
+  #prev,
+  #next{
+    font-weight: bold;
+  }
+
+  #prev{
+    text-align: left;
+  }
+
+  #next{
+    text-align: right;
+  }
+
+  a{
+    color: $primaryColor;
+    font-weight: bold;
+  }
+}
+
+.widget_meta{
+  abbr{
+    @include border-radius(4px);
+    background-color: #e15d1c;
+    color: white;
+    padding: 1px 3px;
+    font-size: 10px;
+    font-weight: bold;
+  }
+}

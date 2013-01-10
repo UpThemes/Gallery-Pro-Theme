@@ -1,93 +1,77 @@
-<?php gpro_abovecomments() ?>
-<div id="comments">
-    <?php $req = get_option('require_name_email'); // Checks if fields are required.
-    if ( 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']) )die ( 'Please do not load this page directly. Thanks!' );
-    if ( ! empty($post->post_password) ) :
-        if ( $_COOKIE['wp-postpass_' . COOKIEHASH] != $post->post_password ) :?>
-	    <div class="nopassword"><?php _e('This post is password protected. Enter the password to view any comments.', 'gpro') ?></div>
-            </div><!-- .comments -->
-            <?php return;
-	endif;
-    endif; ?>
-    <?php if ( have_comments() ) :
-        /* numbers of pings and comments */
-        $ping_count = $comment_count = 0;
-        foreach ( $comments as $comment ) get_comment_type() == "comment" ? ++$comment_count : ++$ping_count;
-        if ( ! empty($comments_by_type['comment']) ) :
-            gpro_abovecommentslist() ?>
-            <div id="comments-list" class="comments">
-                <h3><?php printf($comment_count > 1 ? __('<span>%d</span> Comments', 'gpro') : __('<span>One</span> Comment', 'gpro'), $comment_count) ?></h3>
-                <ol>
-                    <?php wp_list_comments(list_comments_arg()); ?>
-                </ol>
-                <div id="comments-nav-below" class="comment-navigation">
-                     <div class="paginated-comments-links"><?php paginate_comments_links(); ?></div>
-                </div>
-            </div><!-- #comments-list .comments -->
-            <?php gpro_belowcommentslist() ?>			
-        <?php endif; /* if ( $comment_count ) */ ?>
-        <?php if ( ! empty($comments_by_type['pings']) ) : 
-            gpro_abovetrackbackslist() ?>
-            <div id="trackbacks-list" class="comments">
-                <h3><?php printf($ping_count > 1 ? __('<span>%d</span> Trackbacks', 'gpro') : __('<span>One</span> Trackback', 'gpro'), $ping_count) ?></h3>
-                <ol>
-                    <?php wp_list_comments('type=pings&callback=gpro_pings'); ?>
-                </ol>				
-	    </div><!-- #trackbacks-list .comments -->			
-            <?php gpro_belowtrackbackslist() ?>				
-        <?php endif; /* if ( $ping_count ) */ ?>
-    <?php endif; /* if ( $comments ) */
-    if ( 'open' == $post->comment_status ) : ?>
-        <div id="respond">
-            <h3><?php comment_form_title( __('Post a Comment', 'gpro'), __('Post a Reply to %s', 'gpro') ); ?></h3>
-            <div id="cancel-comment-reply"><?php cancel_comment_reply_link() ?></div>
-            <?php if ( get_option('comment_registration') && !$user_ID ) : ?>
-                <p id="login-req"><?php printf(__('You must be <a href="%s" title="Log in">logged in</a> to post a comment.', 'gpro'), get_option('siteurl') . '/wp-login.php?redirect_to=' . get_permalink() ) ?></p>
-            <?php else : ?>
-                <div class="formcontainer">	
-                    <?php gpro_abovecommentsform(); ?>					
-                    <form id="commentform" action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post">
-                        <?php if ( $user_ID ) : ?>
-                            <p id="login"><?php printf(__('<span class="loggedin">Logged in as <a href="%1$s" title="Logged in as %2$s">%2$s</a>.</span> <span class="logout"><a href="%3$s" title="Log out of this account">Log out?</a></span>', 'gpro'),
-                                get_option('siteurl') . '/wp-admin/profile.php',
-                                esc_html($user_identity, true),
-                                wp_logout_url(get_permalink()) ); ?>
-                            </p>
-                        <?php else : ?>
-                            <p id="comment-notes"><?php _e('Your email is <em>never</em> published nor shared.', 'gpro') ?> <?php if ($req) _e('Required fields are marked <span class="required">*</span>', 'gpro') ?></p>
-                            
-                            <div id="form-section-author" class="form-section">
-                                <div class="form-label"><label for="author"><?php _e('Name', 'gpro') ?></label> <?php if ($req) _e('<span class="required">*</span>', 'gpro') ?></div>
-                                <div class="form-input"><input id="author" name="author" type="text" value="<?php echo $comment_author ?>" size="30" maxlength="20" tabindex="3" /></div>
-                            </div><!-- #form-section-author .form-section -->
-                            
-                            <div id="form-section-email" class="form-section">
-                                <div class="form-label"><label for="email"><?php _e('Email', 'gpro') ?></label> <?php if ($req) _e('<span class="required">*</span>', 'gpro') ?></div>
-                                <div class="form-input"><input id="email" name="email" type="text" value="<?php echo $comment_author_email ?>" size="30" maxlength="50" tabindex="4" /></div>
-                            </div><!-- #form-section-email .form-section -->
+<?php
+/**
+ * The template for displaying Comments.
+ *
+ * The area of the page that contains both current comments
+ * and the comment form. The actual display of comments is
+ * handled by a callback to gallery_comment() which is
+ * located in the functions.php file.
+ *
+ * @package WordPress
+ * @subpackage Gallery Pro
+ * @since Gallery Pro 2.0
+ */
+?>
+	<div id="comments">
+	<?php if ( post_password_required() ) : ?>
+		<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'gallery' ); ?></p>
+	</div><!-- #comments -->
+	<?php
+			/* Stop the rest of comments.php from being processed,
+			 * but don't kill the script entirely -- we still have
+			 * to fully load the template.
+			 */
+			return;
+		endif;
+	?>
 
-                            <div id="form-section-url" class="form-section">
-                                                        <div class="form-label"><label for="url"><?php _e('Website', 'gpro') ?></label></div>
-                                                        <div class="form-input"><input id="url" name="url" type="text" value="<?php echo $comment_author_url ?>" size="30" maxlength="50" tabindex="5" /></div>
-                            </div><!-- #form-section-url .form-section -->
-                        <?php endif /* if ( $user_ID ) */ ?>
+	<?php // You can start editing here -- including this comment! ?>
 
-                        <div id="form-section-comment" class="form-section">
-                            <div class="form-label"><label for="comment"><?php _e('Comment', 'gpro') ?></label></div>
-                            <div class="form-textarea"><textarea id="comment" name="comment" cols="45" rows="8" tabindex="6"></textarea></div>
-                        </div><!-- #form-section-comment .form-section -->
-                        
-                        <div id="form-allowed-tags" class="form-section">
-                            <p><span><?php _e('You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:', 'gpro') ?></span> <code><?php echo allowed_tags(); ?></code></p>
-                        </div>
-                        <?php do_action('comment_form', $post->ID); ?>
-                        <div class="form-submit"><input id="submit" name="submit" type="submit" value="<?php _e('Post Comment', 'gpro') ?>" tabindex="7" /><input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" /></div>
-                        <?php comment_id_fields(); ?>    
-                    </form><!-- #commentform -->
-                    <?php gpro_belowcommentsform() ?>											
-                </div><!-- .formcontainer -->
-            <?php endif /* if ( get_option('comment_registration') && !$user_ID ) */ ?>
-	</div><!-- #respond -->
-    <?php endif /* if ( 'open' == $post->comment_status ) */ ?>
+	<?php if ( have_comments() ) : ?>
+		<h2 id="comments-title">
+			<?php
+				printf( _n( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'gallery' ),
+					number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
+			?>
+		</h2>
+
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
+		<nav id="comment-nav-above">
+			<h1 class="assistive-text"><?php _e( 'Comment navigation', 'gallery' ); ?></h1>
+			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'gallery' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'gallery' ) ); ?></div>
+		</nav>
+		<?php endif; // check for comment navigation ?>
+
+		<ol class="commentlist">
+			<?php
+				/* Loop through and list the comments. Tell wp_list_comments()
+				 * to use gallery_comment() to format the comments.
+				 * If you want to overload this in a child theme then you can
+				 * define gallery_comment() and that will be used instead.
+				 * See gallery_comment() in evo/functions.php for more.
+				 */
+				wp_list_comments( array( 'callback' => 'gallery_comment' ) );
+			?>
+		</ol>
+
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
+		<nav id="comment-nav-below">
+			<h1 class="assistive-text"><?php _e( 'Comment navigation', 'gallery' ); ?></h1>
+			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'gallery' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'gallery' ) ); ?></div>
+		</nav>
+		<?php endif; // check for comment navigation ?>
+
+	<?php
+		/* If there are no comments and comments are closed, let's leave a little note, shall we?
+		 * But we don't want the note on pages or post types that do not support comments.
+		 */
+		elseif ( ! comments_open() && ! is_page() && post_type_supports( get_post_type(), 'comments' ) ) :
+	?>
+		<p class="nocomments"><?php _e( 'Comments are closed.', 'gallery' ); ?></p>
+	<?php endif; ?>
+
+	<?php comment_form(array('comment_notes_before' => '','comment_notes_after' => '<p class="form-allowed-tags">' . __( 'Basic <abbr title="HyperText Markup Language">HTML</abbr> allowed.' ) . '</p>', 'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label><span class="textarea-holder"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></span></p>')); ?>
+
 </div><!-- #comments -->
-<?php gpro_belowcomments() ?>

@@ -1,19 +1,37 @@
-<?php get_header(); ?>
-    <div id="container">
-	<div id="content">
-            <?php get_sidebar('page-top'); ?>
-            <?php the_post() ?>
-            <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <?php gpro_postheader(); ?>
-		<div class="entry-content">
-                    <?php the_content(); ?>
-                    <?php wp_link_pages("\t\t\t\t\t<div class='page-link'>".__('Pages: ', 'gpro'), "</div>\n", 'number'); ?>
-                    <?php edit_post_link(__('Edit', 'gpro'),'<span class="edit-link">','</span>'); ?>
-		</div>
-	    </div><!-- .post -->
-            <?php gpro_comments_template(); ?>
-            <?php get_sidebar('page-bottom'); ?>
-	</div><!-- #content -->
-    </div><!-- #container -->
-<?php gpro_sidebar(); ?>
-<?php get_footer(); ?>
+<?php
+/**
+ * The template for displaying all pages.
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site will use a
+ * different template.
+ *
+ * @package WordPress
+ * @subpackage Gallery Pro
+ * @since Gallery Pro 1.0
+ */
+
+get_header(); ?>
+
+	<div id="container" class="cf">
+
+    <div id="content">
+
+			<?php if( have_posts() ): while ( have_posts() ) : the_post(); ?>
+
+      <?php get_template_part( 'content', 'page' ); ?>
+
+      <?php endwhile; else: ?>
+
+      <?php get_template_part( 'content', 'none' ); ?>
+
+      <?php endif; ?>
+
+    </div><!-- /#content -->
+
+    <?php get_sidebar(); ?>
+
+	</div><!-- /#container -->
+
+<?php get_footer() ?>
