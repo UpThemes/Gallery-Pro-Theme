@@ -1,6 +1,6 @@
 <?php
 /**
- * Gallery Pro functions and definitions.
+ * Gallery functions and definitions.
  *
  * Sets up the theme and provides some helper functions, which are used
  * in the theme as custom template tags. Others are attached to action and
@@ -18,19 +18,19 @@
  * For more information on hooks, actions, and filters, see http://codex.wordpress.org/Plugin_API.
  *
  * @package WordPress
- * @subpackage Gallery Pro
- * @since Gallery Pro 1.0
+ * @subpackage Gallery
+ * @since Gallery 1.0
  */
 
 /**
  * Sets up the content width value based on the theme's design and stylesheet.
  */
 if ( ! isset( $content_width ) )
-	$content_width = 700;
+	$content_width = 1240;
 
 /**
  * Sets up theme defaults and registers the various WordPress features that
- * Gallery Pro supports.
+ * Gallery supports.
  *
  * @uses load_theme_textdomain() For translation/localization support.
  * @uses add_editor_style() To add a Visual Editor stylesheet.
@@ -39,14 +39,14 @@ if ( ! isset( $content_width ) )
  * @uses register_nav_menu() To add support for navigation menus.
  * @uses set_post_thumbnail_size() To set a custom post thumbnail size.
  *
- * @since Gallery Pro 1.0
+ * @since Gallery 1.0
  */
 function gallery_setup() {
 	/*
-	 * Makes Gallery Pro available for translation.
+	 * Makes Gallery available for translation.
 	 *
 	 * Translations can be added to the /languages/ directory.
-	 * If you're building a theme based on Gallery Pro, use a find and replace
+	 * If you're building a theme based on Gallery, use a find and replace
 	 * to change 'gallery' to the name of your theme in all the template files.
 	 */
 	load_theme_textdomain( 'gallery', get_template_directory() . '/languages' );
@@ -64,8 +64,8 @@ function gallery_setup() {
 	register_nav_menu( 'primary_nav', __( 'Primary Menu', 'gallery' ) );
 	register_nav_menu( 'footer_nav', __( 'Footer Menu', 'gallery' ) );
 
-  add_image_size('full-width',660,99999,false);
-  add_image_size('full-width-2x',1320,99999,false);
+  add_image_size('full-width',700,99999,false);
+  add_image_size('full-width-2x',1400,99999,false);
   add_image_size('grid',232,9999,false);
   add_image_size('grid-2x',464,9999,false);
 
@@ -96,7 +96,7 @@ include_once( get_template_directory() . '/library/gallery-slider.php' );
 /**
  * Enqueues scripts and styles for front-end.
  *
- * @since Gallery Pro 1.0
+ * @since Gallery 1.0
  */
 function gallery_scripts_styles() {
 
@@ -107,24 +107,22 @@ function gallery_scripts_styles() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
 
-	wp_enqueue_script( 'evo-navigation', get_template_directory_uri() . '/js/navigation.js', false );
-  wp_enqueue_script( 'evo-hoverIntent', get_template_directory_uri() . '/js/hoverIntent.js', false );
-  wp_enqueue_script( 'evo-retina', get_template_directory_uri() . '/js/jquery.retina.js', false );
-  wp_enqueue_script( 'evo-infinitescroll', get_template_directory_uri() . '/js/jquery.infinitescroll.js', array('jquery') );
-  wp_enqueue_script( 'evo-fitvids', get_template_directory_uri() . '/js/jquery.fitvids.js', array('jquery') );
-  wp_enqueue_script( 'evo-masonry', get_template_directory_uri() . '/js/jquery.masonry.js', array('evo-infinitescroll') );
-  wp_enqueue_script( 'evo-scrollTo', get_template_directory_uri() . '/js/jquery.scrollTo.js', array('evo-masonry') );
-  wp_enqueue_script( 'evo-fitVids', get_template_directory_uri() . '/js/fitVids.js', false );
-  wp_enqueue_script( 'evo-view', get_template_directory_uri() . '/js/view.js', false );
-  wp_enqueue_script( 'evo-flexslider', get_template_directory_uri() . '/js/jquery.flexslider.js', array('jquery') );
-  wp_enqueue_script( 'evo-superfish', get_template_directory_uri() . '/js/superfish.js' );
-  wp_enqueue_script( 'evo-supersubs', get_template_directory_uri() . '/js/supersubs.js', array('evo-superfish') );
-  wp_enqueue_script( 'evo-global', get_template_directory_uri() . '/js/global.js', array('evo-flexslider','evo-fitvids','evo-infinitescroll','evo-retina','evo-scrollTo','evo-supersubs','evo-navigation') );
+  wp_enqueue_script( 'gallery-hoverIntent', get_template_directory_uri() . '/js/hoverIntent.js', array('jquery'), false );
+  wp_enqueue_script( 'gallery-sticky', get_template_directory_uri() . '/js/jquery.sticky.js', array('jquery'), false );
+  wp_enqueue_script( 'gallery-infinitescroll', get_template_directory_uri() . '/js/jquery.infinitescroll.js', array('jquery') );
+  wp_enqueue_script( 'gallery-masonry', get_template_directory_uri() . '/js/jquery.masonry.js', array('gallery-infinitescroll') );
+  wp_enqueue_script( 'gallery-fitvids', get_template_directory_uri() . '/js/fitvids.js', false );
+  wp_enqueue_script( 'gallery-view', get_template_directory_uri() . '/js/view.js', false );
+  wp_enqueue_script( 'gallery-flexslider', get_template_directory_uri() . '/js/jquery.flexslider.js', array('jquery') );
+  wp_enqueue_script( 'gallery-superfish', get_template_directory_uri() . '/js/superfish.js' );
+  wp_enqueue_script( 'gallery-supersubs', get_template_directory_uri() . '/js/supersubs.js', array('gallery-superfish') );
+	wp_enqueue_script( 'gallery-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery','gallery-superfish','gallery-supersubs'), false );
+  wp_enqueue_script( 'gallery-global', get_template_directory_uri() . '/js/global.js', array('gallery-sticky','gallery-flexslider','gallery-fitvids','gallery-infinitescroll','gallery-supersubs','gallery-navigation') );
 
 	/*
 	 * Loads our main stylesheet.
 	 */
-	wp_enqueue_style( 'evo-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'gallery-style', get_stylesheet_uri() );
 }
 add_action( 'wp_enqueue_scripts', 'gallery_scripts_styles' );
 
@@ -187,7 +185,7 @@ function gallery_post_thumbnail( $size ){
  * Creates a nicely formatted and more specific title element text
  * for output in head of document, based on current view.
  *
- * @since Gallery Pro 1.0
+ * @since Gallery 1.0
  *
  * @param string $title Default title text for current view.
  * @param string $sep Optional separator.
@@ -218,7 +216,7 @@ add_filter( 'wp_title', 'gallery_wp_title', 10, 2 );
 /**
  * Makes our wp_nav_menu() fallback -- wp_page_menu() -- show a home link.
  *
- * @since Gallery Pro 1.0
+ * @since Gallery 1.0
  */
 function gallery_page_menu_args( $args ) {
 	if ( ! isset( $args['show_home'] ) )
@@ -230,7 +228,7 @@ add_filter( 'wp_page_menu_args', 'gallery_page_menu_args' );
 /**
  * Registers our main widget area and the front page widget areas.
  *
- * @since Gallery Pro 1.0
+ * @since Gallery 1.0
  */
 function gallery_widgets_init() {
 	register_sidebar( array(
@@ -258,7 +256,7 @@ if ( ! function_exists( 'gallery_content_nav' ) ) :
 /**
  * Displays navigation to next/previous pages when applicable.
  *
- * @since Gallery Pro 1.0
+ * @since Gallery 1.0
  */
 function gallery_content_nav( $nav_id ) {
 	global $wp_query;
@@ -282,7 +280,7 @@ if ( ! function_exists( 'gallery_comment' ) ) :
  *
  * Used as a callback by wp_list_comments() for displaying the comments.
  *
- * @since Gallery Pro 1.0
+ * @since Gallery 1.0
  */
 function gallery_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
@@ -338,7 +336,7 @@ endif; // ends check for gallery_comment()
 /**
  * Modifies the text fields for the comment form.
  *
- * @since Gallery Pro 2.0
+ * @since Gallery 2.0
  */
 function upthemes_form_fields($fields) {
 	global $commenter,$aria_req;
@@ -359,7 +357,7 @@ if ( ! function_exists( 'gallery_entry_meta' ) ) :
  *
  * Create your own gallery_entry_meta() to override in a child theme.
  *
- * @since Gallery Pro 1.0
+ * @since Gallery 1.0
  */
 function gallery_entry_meta() {
 	// Translators: used between list items, there is a space after the comma.
@@ -410,7 +408,7 @@ endif;
  * 4. Custom fonts enabled.
  * 5. Single or multiple authors.
  *
- * @since Gallery Pro 1.0
+ * @since Gallery 1.0
  *
  * @param array Existing class values.
  * @return array Filtered class values.
@@ -435,7 +433,7 @@ function gallery_body_class( $classes ) {
 		$classes[] = 'custom-background-white';
 
 	// Enable custom font class only if the font CSS is queued to load.
-	if ( wp_style_is( 'evo-fonts', 'queue' ) )
+	if ( wp_style_is( 'gallery-fonts', 'queue' ) )
 		$classes[] = 'custom-font-enabled';
 
 	if ( ! is_multi_author() )
@@ -448,7 +446,7 @@ add_filter( 'body_class', 'gallery_body_class' );
 /**
  * Add postMessage support for site title and description for the Theme Customizer.
  *
- * @since Gallery Pro 1.0
+ * @since Gallery 1.0
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  * @return void
@@ -462,10 +460,10 @@ add_action( 'customize_register', 'gallery_customize_register' );
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  *
- * @since Gallery Pro 1.0
+ * @since Gallery 1.0
  */
 function gallery_customize_preview_js() {
-	wp_enqueue_script( 'evo-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20120827', true );
+	wp_enqueue_script( 'gallery-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20120827', true );
 }
 add_action( 'customize_preview_init', 'gallery_customize_preview_js' );
 
@@ -473,7 +471,7 @@ add_action( 'customize_preview_init', 'gallery_customize_preview_js' );
 /**
  * Displays heading text with post count
  *
- * @since Gallery Pro 1.0
+ * @since Gallery 1.0
  */
 function gallery_list_header(){
 	
@@ -527,7 +525,7 @@ function gallery_list_header(){
 /**
  *  Post navigation functionality
  *
- * @since Gallery Pro 1.0
+ * @since Gallery 1.0
  */
 function gallery_navigation_below() {
   if ( is_single() ): ?>

@@ -5,8 +5,8 @@
  * Displays all of the <head> section and everything up till <div id="wrapper">
  *
  * @package WordPress
- * @subpackage Gallery Pro
- * @since Gallery Pro 2.0
+ * @subpackage Gallery
+ * @since Gallery 2.0
  */
 ?><!DOCTYPE html>
 <!--[if IE 7]>
@@ -37,21 +37,23 @@
     <div id="branding">
   		<?php if( !get_header_image() ): ?>
 	    	<div id="blog-title"><span><a href="<?php echo get_site_url(); ?>" title="<?php bloginfo('name') ?>" rel="home"><?php bloginfo('name') ?></a></span></div>
-	      <div id="blog-description"><?php bloginfo('description'); ?></div>
 	    <?php else: ?>
     	  <div id="blog-title"><a href="<?php echo get_site_url(); ?>" title="<?php bloginfo('name') ?>" rel="home"><img src="<?php echo get_header_image(); ?>" alt="<?php bloginfo('name') ?>" /></a></div>
 			<?php endif; ?>
+      <div id="blog-description"><?php bloginfo('description'); ?></div>
 	
 		</div><!-- /#branding -->
 		<div id="access">
-	    <?php
-			wp_nav_menu(array(
-				'theme_location' => 'primary_nav',
-				'menu_class' => 'sf-menu',
-				'container' => false,
-				'fallback_cb' => 'wp_page_menu_mod'
-			));
-			?>
+      <nav>
+  	    <?php
+  			wp_nav_menu(array(
+  				'theme_location' => 'primary_nav',
+  				'menu_class' => 'sf-menu',
+  				'container' => false,
+  				'fallback_cb' => 'wp_page_menu_mod'
+  			));
+  			?>
+  		</nav>
 	  </div><!-- #access -->
     <div class="clear"></div>
   </div><!-- #header-->

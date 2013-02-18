@@ -3,8 +3,8 @@
  * The template for displaying a "No posts found" message.
  *
  * @package WordPress
- * @subpackage Gallery Pro
- * @since Gallery Pro 1.0
+ * @subpackage Gallery
+ * @since Gallery 1.0
  */
 ?>
 

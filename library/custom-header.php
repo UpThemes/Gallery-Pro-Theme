@@ -1,11 +1,11 @@
 <?php
 /**
- * Implements an optional custom header for Gallery Pro.
+ * Implements an optional custom header for Gallery.
  * See http://codex.wordpress.org/Custom_Headers
  *
  * @package WordPress
- * @subpackage Gallery Pro
- * @since Gallery Pro 2.0
+ * @subpackage Gallery
+ * @since Gallery 2.0
  */
 
 /**
@@ -16,7 +16,7 @@
  * @uses gallery_admin_header_style() to style wp-admin form.
  * @uses gallery_admin_header_image() to add custom markup to wp-admin form.
  *
- * @since Gallery Pro 1.0
+ * @since Gallery 1.0
  */
 function gallery_custom_header_setup() {
 	$args = array(
@@ -25,9 +25,9 @@ function gallery_custom_header_setup() {
 		'default-image'          => '',
 
 		// Set height and width, with a maximum value for the width.
-		'height'                 => 250,
-		'width'                  => 960,
-		'max-width'              => 2000,
+		'height'                 => 260,
+		'width'                  => 260,
+		'max-width'              => 1000,
 
 		// Support flexible height and width.
 		'flex-height'            => true,
@@ -51,7 +51,7 @@ add_action( 'after_setup_theme', 'gallery_custom_header_setup' );
  *
  * get_header_textcolor() options: 444 is default, hide text (returns 'blank'), or any hex value.
  *
- * @since Gallery Pro 1.0
+ * @since Gallery 1.0
  */
 function gallery_header_style() {
 	$text_color = get_header_textcolor();
@@ -89,7 +89,7 @@ function gallery_header_style() {
 /**
  * Styles the header image displayed on the Appearance > Header admin panel.
  *
- * @since Gallery Pro 1.0
+ * @since Gallery 1.0
  */
 function gallery_admin_header_style() {
 ?>
@@ -129,7 +129,7 @@ function gallery_admin_header_style() {
  * Outputs markup to be displayed on the Appearance > Header admin panel.
  * This callback overrides the default markup displayed there.
  *
- * @since Gallery Pro 1.0
+ * @since Gallery 1.0
  */
 function gallery_admin_header_image() {
 	?>

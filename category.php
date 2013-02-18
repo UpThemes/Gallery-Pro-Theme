@@ -7,8 +7,8 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  * @package WordPress
- * @subpackage Gallery Pro
- * @since Gallery Pro 1.0
+ * @subpackage Gallery
+ * @since Gallery 1.0
  */
 
 get_header(); ?>
@@ -17,7 +17,7 @@ get_header(); ?>
 
     <div id="content">
 
-      <h1 class="category-title"><?php _e("Category Archives:","gallery"); ?> <?php single_cat_title(); ?></h1>
+      <h1 class="category-title"><?php single_cat_title(); ?></h1>
 
       <div id="masonry">
 

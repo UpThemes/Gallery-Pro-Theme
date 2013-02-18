@@ -64,3 +64,14 @@
     padding-bottom: 20px;
   }
 }
+
+@media only screen and (max-width: 640px) {
+  #footer{
+    .widget{
+      width: auto;
+      margin-right: 0;
+      margin-bottom: 30px;
+      float: none; 
+    }
+  }
+}

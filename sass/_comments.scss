@@ -1,4 +1,9 @@
 #comments{
+  clear: both;
+
+  margin-top: 20px;
+  border-top: 1px solid #f2f2f2;
+  padding-top: 20px;
 
   h2#comments-title,
   h3#reply-title{
@@ -185,5 +190,53 @@
     float: right;
     width: 35%;
     text-align: right;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  #respond{
+    p.comment-form-email,
+    p.comment-form-url,
+    p.comment-form-author{
+      width: 100%;
+      display: block;
+      float: none;
+      input[type="text"],
+      textarea{
+        position: absolute;
+        left: 0;
+        right: 0;
+        padding: 10px;
+        margin: 0;
+        width: auto;
+      }
+    }
+    p.comment-form-comment{
+      span{
+        height: 8.5em;
+      }
+      textarea{
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: auto;
+        padding: 10px;
+        margin: 0;
+      }
+    }
+    p.form-allowed-tags{
+      line-height: 1.4em;
+    }
+    p.form-allowed-tags,
+    p.form-submit{
+      float: none;
+      width: auto;
+      span{
+        height: 9em;
+      }
+      input[type="submit"]{
+        width: 100%;
+      }
+    }
   }
 }

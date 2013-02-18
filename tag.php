@@ -7,8 +7,8 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  * @package WordPress
- * @subpackage Gallery Pro
- * @since Gallery Pro 1.0
+ * @subpackage Gallery
+ * @since Gallery 1.0
  */
 
 get_header(); ?>

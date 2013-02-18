@@ -1,28 +1,24 @@
 /*
-Theme Name: Gallery Pro
+Theme Name: Gallery
 Theme URI: http://upthemes.com/themes/gallery/
-Description: The next generation of the Gallery Pro theme.
+Description: The next generation of the Gallery theme.
 Author: Chris Wallace for <a href="http://upthemes.com">UpThemes</a>
 Author URI: http://upthemes.com
 Version: 2.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: light, gray, white, right-sidebar, fixed-width, custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, microformats, post-formats, rtl-language-support, theme-options, translation-ready
+Text Domain: gallery
 */
-
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Norican|Playfair+Display+SC);
-
-$primaryFontFamily: "Source Sans Pro";
-$secondaryFontFamily: "Norican";
-$tertiaryFontFamily: "Playfair Display SC";
-$primaryColor: #aa1f25;
-$textColor: #222;
-$siteWidth: 1240px;
 
 @import "compass/reset";
 @import "compass/css3";
-@import "base";
+@import "compass/utilities/color/contrast";
+@import "variables";
+@import "editor-style";
 @import "icons";
 @import "header";
 @import "menu";
-@import "post";
 @import "comments";
 @import "sidebar";
 @import "footer";
@@ -60,14 +56,33 @@ $siteWidth: 1240px;
   height: auto;
 }
 
+.archive #content{
+  text-align: center;
+  .hentry{
+    text-align: left;
+  }
+}
+
+.home #masonry{
+  margin-top: 5px;
+}
+
+.archive #masonry{
+  margin-top: 45px;
+}
+
 .category-title,
 .archive-title,
 .tag-title{
   text-align: center;
-  padding-bottom: 1em;
+  color: #444;
+  font-family: $secondaryFontFamily;
+  padding: 1em 0 .5em;
   margin-bottom: 1em;
   font-size: 1.6em;
-  border-bottom: 2px solid rgba(0,0,0,.07);
+  margin: 0 auto;
+  display: inline-block;
+  border-bottom: 3px solid #444;
 }
 
 .home,
@@ -107,9 +122,11 @@ $siteWidth: 1240px;
 
 #infscr-loading{
   text-align: center;
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 220px;
+  margin-left: -120px;
   z-index: 9999;
   color: white;
   background-color: rgba(0,0,0,0.8);
@@ -140,7 +157,7 @@ $siteWidth: 1240px;
 
 #more a {
   color: white;
-  background-color: $primaryColor;
+  background-color: rgba(0,0,0,0.2);
   display: block;
   border: 2px solid white;
   text-align: center;
@@ -163,5 +180,42 @@ $siteWidth: 1240px;
     padding-top: 11px;
     padding-bottom: 9px;
     @include text-shadow(0 -1px 0 rgba(0, 0, 0, 0.2));
+  }
+}
+
+@media only screen and (max-width: 640px) {
+
+  #header{
+    margin-bottom: 0;
+  }
+  .home #masonry,
+  .archive #masonry{
+    margin-top: 30px;
+  }
+  .single,
+  .page {
+    .entry-title{
+      font-size: 1.4em !important;
+    }
+    #container{
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    #content{
+      margin-bottom: 20px;
+    }
+    #content,
+    #primary{
+      width: 100%;
+      float: none;
+    }
+    #primary aside:last-of-type{
+      margin-bottom: 0;
+    }
+    #footer{
+      margin-top: 5px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
   }
 }

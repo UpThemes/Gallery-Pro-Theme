@@ -70,8 +70,13 @@
 		}
         $this.wrap('<div class="fluid-width-video-wrapper"></div>').parent('.fluid-width-video-wrapper').css('padding-top', (aspectRatio * 100)+"%");
         $this.removeAttr('height').removeAttr('width');
+        if( $('body.single').length > 0 )
+          $this.parent().prependTo($this.parents("#content"));
+        else
+          $this.parent().prependTo($this.parents(".hentry"));
+        $this.parents('.hentry').find('p:empty').remove();
       });
     });
-  
+
   }
 })( jQuery );

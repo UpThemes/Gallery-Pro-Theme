@@ -1,0 +1,204 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Gallery Theme\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-01-17 10:14-0600\n"
+"PO-Revision-Date: 2013-01-17 14:55-0600\n"
+"Last-Translator: Chris Wallace <chris@upthemes.com>\n"
+"Language-Team: UpThemes <support@upthemes.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;_e;__;_x;_esc_attr_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery\n"
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/archive.php:29
+#, php-format
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/archive.php:31
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/archive.php:31
+msgid "F Y"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/archive.php:33
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/archive.php:33
+msgid "Y"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/archive.php:35
+msgid "Archives"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/comments.php:17
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/comments.php:40
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/comments.php:60
+msgid "Comment navigation"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/comments.php:41
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/comments.php:61
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/comments.php:42
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/comments.php:62
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/comments.php:72
+msgid "Comments are closed."
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/comments.php:75
+msgid "Basic <abbr title=\"HyperText Markup Language\">HTML</abbr> allowed."
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/comments.php:75
+msgid "Comment"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/content-none.php:13
+msgid "Nothing Found"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/content-none.php:17
+msgid "Apologies, but no results were found. Perhaps searching will help find a related post."
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/content-page.php:19
+msgid "Pages:"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/content-single.php:21
+msgid "Posted by"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/content-single.php:22
+msgid "in"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/content-single.php:31
+msgid "Tags:"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/footer.php:26
+msgid "Copyright 2012 Gallery Theme. All Rights Reserved."
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:64
+msgid "Primary Menu"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:65
+msgid "Footer Menu"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:210
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:235
+msgid "Main Sidebar"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:237
+msgid "Appears on posts and pages."
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:244
+msgid "Footer"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:246
+msgid "Appears on footer."
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:266
+msgid "Post navigation"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:267
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:268
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:292
+msgid "Pingback:"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:292
+msgid "Edit"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:309
+#, php-format
+msgid "%1$s <span class=\"says\">said:</span>"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:317
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:326
+msgid "Reply <span>&darr;</span>"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:364
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:367
+msgid ", "
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:378
+#, php-format
+msgid "View all posts by %s"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:384
+#, php-format
+msgid "This entry was posted in %1$s and tagged %2$s on %3$s<span class=\"by-author\"> by %4$s</span>."
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:386
+#, php-format
+msgid "This entry was posted in %1$s on %3$s<span class=\"by-author\"> by %4$s</span>."
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:388
+#, php-format
+msgid "This entry was posted on %3$s<span class=\"by-author\"> by %4$s</span>."
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:518
+#, php-format
+msgid "Showing %1$s - %2$s of %3$s"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/functions.php:538
+msgid "Load More"
+msgstr ""
+
+#: /Users/chriswallace/Dropbox/Sites/upthemes.com/demos/wp-content/themes/gallery/tag.php:20
+msgid "Tag Archive:"
+msgstr ""
+

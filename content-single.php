@@ -3,13 +3,16 @@
  * The template for displaying single post content.
  *
  * @package WordPress
- * @subpackage Gallery Pro
- * @since Gallery Pro 2.0
+ * @subpackage Gallery
+ * @since Gallery 2.0
  */
 ?>
 
+	<?php if( has_post_thumbnail() ): ?>
+  	<a href="<?php the_permalink(); ?>"><?php gallery_post_thumbnail('full-width'); ?></a>
+  <?php endif; ?>
+
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<?php gallery_post_thumbnail('full-width'); ?>
 
 		<header class="entry-header">
 			<?php echo get_avatar( get_the_author_meta('user_email'), 64 ); ?>

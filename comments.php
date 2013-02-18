@@ -8,8 +8,8 @@
  * located in the functions.php file.
  *
  * @package WordPress
- * @subpackage Gallery Pro
- * @since Gallery Pro 2.0
+ * @subpackage Gallery
+ * @since Gallery 2.0
  */
 ?>
 	<div id="comments">

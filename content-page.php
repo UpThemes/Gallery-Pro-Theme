@@ -3,8 +3,8 @@
  * The template used for displaying page content in page.php
  *
  * @package WordPress
- * @subpackage Gallery Pro
- * @since Gallery Pro 2.0
+ * @subpackage Gallery
+ * @since Gallery 2.0
  */
 ?>
 

@@ -3,8 +3,8 @@
  * The template for displaying posts in the Quote post format
  *
  * @package WordPress
- * @subpackage Gallery Pro
- * @since Gallery Pro 1.0
+ * @subpackage Gallery
+ * @since Gallery 1.0
  */
 ?>
 
@@ -15,7 +15,7 @@
 
     <div class="post-meta">
       <div class="comments">
-      	<?php comments_number(); ?>
+      	<a href="<?php the_permalink(); ?>#comments"><?php comments_number(); ?></a>
       </div><!--/.comments-->
     </div><!--/.post-meta-->
 	</article><!--/.post-->

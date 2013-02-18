@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying posts in the Video post format
+ * The template for displaying posts in the Quote post format
  *
  * @package WordPress
  * @subpackage Gallery
@@ -14,8 +14,6 @@
     </div><!--/.post-content-->
 
     <div class="post-meta">
-      <div class="comments">
-      	<a href="<?php the_permalink(); ?>#comments"><?php comments_number(); ?></a>
-      </div><!--/.comments-->
+      <a href="<?php the_permalink(); ?>">#</a>
     </div><!--/.post-meta-->
 	</article><!--/.post-->

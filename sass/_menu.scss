@@ -4,11 +4,10 @@
   margin:     0;
   padding:    0;
   list-style:   none;
-  text-transform: uppercase;
   font-weight: bold;
 }
 .sf-menu {
-  line-height:  1.0;
+  line-height:  1.5;
   text-align: center;
 }
 .sf-menu ul {
@@ -60,11 +59,12 @@ ul.sf-menu li li li.sfHover ul {
   margin-bottom:  0;
 }
 .sf-menu a {
-  padding:    .75em 1em;
+  padding:    1em 1em;
   text-decoration:none;
 }
 .sf-menu a, .sf-menu a:visited  { /* visited pseudo selector so IE6 applies text colour*/
   color:      white;
+  color: rgba(white,.8);
 }
 .sf-menu li {
   text-align: left;
@@ -77,8 +77,9 @@ ul.sf-menu li li li.sfHover ul {
 }
 .sf-menu li:hover, .sf-menu li.sfHover,
 .sf-menu a:focus, .sf-menu a:hover, .sf-menu a:active {
-  background:   $primaryColor;
-  outline:    0;
+  color: rgba(white,1);
+  background: $primaryColor;
+  outline: 0;
 }
 
 /*** arrows **/
@@ -91,7 +92,7 @@ ul.sf-menu li li li.sfHover ul {
   display:    block;
   right:      1em;
   top:      1.05em; /* IE6 only */
-  margin-top:3px;
+  margin-top: 11px;
   width:      0;
   height:     0;
   border-top:5px solid #fff;
